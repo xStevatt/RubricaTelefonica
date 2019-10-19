@@ -15,9 +15,10 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     {   
         this.setTitle("Rubrica Telefonica"); 
         this.setResizable(false);
+        requestFocusInWindow(); 
         
         initComponents();
-        jTextArea1.requestFocusInWindow();       
+        jTextArea1.requestFocusInWindow();
         this.setLocationRelativeTo(null);
         setDefaultXML();
     }

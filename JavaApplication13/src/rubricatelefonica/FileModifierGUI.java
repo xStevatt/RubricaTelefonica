@@ -8,6 +8,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
     {   
         this.setTitle("Modifica un file"); 
         this.setResizable(false);
+        requestFocusInWindow();   
         
         initComponents();
         this.setLocationRelativeTo(null);
@@ -23,11 +24,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 711, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 489, Short.MAX_VALUE)
         );
 
         pack();
