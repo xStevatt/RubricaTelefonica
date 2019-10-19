@@ -1,5 +1,7 @@
 package rubricatelefonica;
 
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 public class FileOpenerGUI extends javax.swing.JFrame {
     
     public FileOpenerGUI()
@@ -19,6 +21,9 @@ public class FileOpenerGUI extends javax.swing.JFrame {
         jFileChooser1 = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.xml", "xml");
+        jFileChooser1.setFileFilter(filter);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

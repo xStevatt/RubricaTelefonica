@@ -42,6 +42,10 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JFileChooser" name="jFileChooser1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFileChooser()"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="FileNameExtensionFilter filter = new FileNameExtensionFilter(&quot;*.xml&quot;, &quot;xml&quot;);&#xa;jFileChooser1.setFileFilter(filter);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
