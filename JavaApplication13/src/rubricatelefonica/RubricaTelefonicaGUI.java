@@ -17,6 +17,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         this.setResizable(false);
         
         initComponents();
+        jTextArea1.requestFocusInWindow();       
         this.setLocationRelativeTo(null);
         setDefaultXML();
     }
@@ -67,6 +68,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         openInBroswer = new javax.swing.JButton();
+        openInBroswer1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +80,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Questo programma ti permette la creazione di un file XML che gestisce la tua rubrica. New per creare un nuovo file.");
 
+        openFileButton.setBackground(new java.awt.Color(255, 102, 102));
         openFileButton.setText("Apri un file specifico");
         openFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +88,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             }
         });
 
+        modifyFileButton.setBackground(new java.awt.Color(255, 102, 102));
         modifyFileButton.setText("Modifica il file aperto");
         modifyFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +96,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             }
         });
 
+        createFileButton.setBackground(new java.awt.Color(255, 102, 102));
         createFileButton.setText("Crea una nuova rubrica");
         createFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,10 +112,19 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Valloncini Srl. Tutti i diritti sono riservati. Version 1.0");
 
+        openInBroswer.setBackground(new java.awt.Color(0, 153, 153));
         openInBroswer.setText("Apri file nel broswer");
         openInBroswer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openInBroswerActionPerformed(evt);
+            }
+        });
+
+        openInBroswer1.setBackground(new java.awt.Color(0, 153, 153));
+        openInBroswer1.setText("Apri file nel notepad");
+        openInBroswer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openInBroswer1ActionPerformed(evt);
             }
         });
 
@@ -148,7 +162,9 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                         .addGap(52, 52, 52))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(openInBroswer)
-                        .addGap(277, 277, 277))))
+                        .addGap(71, 71, 71)
+                        .addComponent(openInBroswer1)
+                        .addGap(182, 182, 182))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +183,9 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(openInBroswer)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(openInBroswer)
+                    .addComponent(openInBroswer1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -213,18 +231,48 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     }//GEN-LAST:event_createFileButtonActionPerformed
 
     private void openInBroswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswerActionPerformed
-        try
+        
+        int choice = JOptionPane.showConfirmDialog(this, "Vuoi aprire il file nel tuo broswer?");
+            
+        if(choice == 0)
         {
-            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) 
+            try
             {
-                Desktop.getDesktop().browse(new URI(defaultFileName));
+                if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) 
+                {
+                    Desktop.getDesktop().browse(new URI(defaultFileName));
+                }
+            }
+            catch(Exception e)
+            {
+                System.err.println("Errore nell'apertura del broswer");
             }
         }
-        catch(Exception e)
-        {
-            System.err.println("Errore nell'apertura del broswer");
-        }
     }//GEN-LAST:event_openInBroswerActionPerformed
+
+    private void openInBroswer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer1ActionPerformed
+                
+        int choice = JOptionPane.showConfirmDialog(this, "Vuoi aprire il file nel blocco note?");
+            
+        if(choice == 0)
+        {
+            try
+            {
+                if (Desktop.isDesktopSupported())
+                {
+                    Desktop.getDesktop().edit(new File(defaultFileName));
+                } 
+                else 
+                {
+                    // dunno, up to you to handle this
+                }
+            }
+            catch(Exception e)
+            {
+                System.err.println("Errore nell'apertura del broswer");
+            }
+        }
+    }//GEN-LAST:event_openInBroswer1ActionPerformed
 
     public static void main(String args[]) 
     {   
@@ -259,5 +307,6 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     private javax.swing.JButton modifyFileButton;
     private javax.swing.JButton openFileButton;
     private javax.swing.JButton openInBroswer;
+    private javax.swing.JButton openInBroswer1;
     // End of variables declaration//GEN-END:variables
 }

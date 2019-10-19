@@ -61,7 +61,9 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="openInBroswer" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="openInBroswer1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -85,7 +87,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="openInBroswer" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="openInBroswer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="openInBroswer1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="9" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="270" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -116,6 +121,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="openFileButton">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Apri un file specifico"/>
       </Properties>
       <Events>
@@ -124,6 +132,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="modifyFileButton">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Modifica il file aperto"/>
       </Properties>
       <Events>
@@ -132,6 +143,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="createFileButton">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Crea una nuova rubrica"/>
       </Properties>
       <Events>
@@ -168,10 +182,24 @@
     </Component>
     <Component class="javax.swing.JButton" name="openInBroswer">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Apri file nel broswer"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openInBroswerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="openInBroswer1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Apri file nel notepad"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openInBroswer1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
