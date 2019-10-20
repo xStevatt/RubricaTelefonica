@@ -1,6 +1,8 @@
 package rubricatelefonica;
 
 import java.io.File;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,6 +20,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        ButtonGroup bg = new ButtonGroup(); 
+        bg.add(IDRadioButton);
+        bg.add(NameSurnameRadio);
+        IDRadioButton.setSelected(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -39,11 +46,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addPersonButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        IDRadioButton = new javax.swing.JRadioButton();
+        NameSurnameRadio = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
@@ -167,7 +174,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
 
         jButton1.setText("Elimina persona");
 
-        jButton2.setText("Aggiungi Persona");
+        addPersonButton.setText("Aggiungi Persona");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -176,7 +183,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addPersonButton, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -186,7 +193,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(addPersonButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -195,9 +202,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Search by");
 
-        jRadioButton1.setText("ID");
+        IDRadioButton.setText("ID");
 
-        jRadioButton2.setText("Name & Surname");
+        NameSurnameRadio.setText("Name & Surname");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -207,9 +214,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(21, 21, 21)
-                .addComponent(jRadioButton1)
+                .addComponent(IDRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(NameSurnameRadio)
                 .addGap(15, 15, 15))
         );
         jPanel3Layout.setVerticalGroup(
@@ -218,8 +225,8 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(IDRadioButton)
+                    .addComponent(NameSurnameRadio))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -417,6 +424,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton IDRadioButton;
+    private javax.swing.JRadioButton NameSurnameRadio;
+    private javax.swing.JButton addPersonButton;
     private javax.swing.JButton deletePersonAddressButton;
     private javax.swing.JButton deletePersonEmailButton;
     private javax.swing.JButton deletePersonMobileButton;
@@ -425,7 +435,6 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private javax.swing.JButton deletePersonSurnameButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -437,8 +446,6 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
