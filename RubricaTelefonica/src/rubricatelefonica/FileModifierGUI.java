@@ -256,7 +256,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         fieldNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldNome.setText("Inserisci qui il nome della persona");
+        fieldNome.setText("Inserisci qui il nome");
         fieldNome.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if(!IDRadioButton.isSelected())
@@ -267,7 +267,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         });
 
         fieldCognome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldCognome.setText("Inserisci qui il cognome della persona");
+        fieldCognome.setText("Inserisci qui il cognome");
         fieldCognome.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if(!IDRadioButton.isSelected())
@@ -330,7 +330,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         fieldID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldID.setText("Inserisci qui l'ID della persona");
+        fieldID.setText("Inserisci qui l'ID");
         fieldID.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if(!NameSurnameRadio.isSelected())
@@ -357,8 +357,8 @@ public class FileModifierGUI extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonID)
                 .addContainerGap(18, Short.MAX_VALUE))
