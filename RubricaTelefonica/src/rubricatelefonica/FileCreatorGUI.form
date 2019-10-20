@@ -53,11 +53,15 @@
                       <Component id="jTextField1" min="-2" pref="298" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="labelEmail" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="labelEmail" min="-2" pref="219" max="-2" attributes="0"/>
+                          <Component id="labelEmail1" min="-2" pref="219" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="modifyFileButton" max="32767" attributes="0"/>
                           <Component id="jTextField6" pref="298" max="32767" attributes="0"/>
+                          <Component id="jTextField7" alignment="0" pref="298" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -100,9 +104,14 @@
                   <Component id="jTextField6" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jTextField7" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="labelEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
               <Component id="modifyFileButton" min="-2" pref="46" max="-2" attributes="0"/>
-              <EmptySpace pref="77" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -223,6 +232,22 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifyFileButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField7">
+      <Properties>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;Inserire qui l&apos;ID della persona: &quot;" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField7.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    jTextField6.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelEmail1">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" value="ID Persona:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
