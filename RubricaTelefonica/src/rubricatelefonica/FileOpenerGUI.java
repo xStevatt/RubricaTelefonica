@@ -1,63 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package rubricatelefonica;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class FileOpenerGUI extends javax.swing.JFrame {
+/**
+ *
+ * @author Stefano
+ */
+public class FileOpenerGUI extends JPanel
+{   
+    private File XMLFile; 
     
     public FileOpenerGUI()
     {   
-        this.setTitle("Rubrica Telefonica"); 
-        this.setResizable(false);   
-        requestFocusInWindow();   
-
-        initComponents();
-        this.setLocationRelativeTo(null);
-    }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jFileChooser1 = new javax.swing.JFileChooser();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
+        JFileChooser filechooser = new JFileChooser(); 
+        
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.xml", "xml");
-        jFileChooser1.setFileFilter(filter);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FileOpenerGUI().setVisible(true);
-            }
-        });
+        filechooser.setFileFilter(filter);
+        filechooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        filechooser.setMultiSelectionEnabled(false);
+        filechooser.setFileHidingEnabled(true);
+        
+        int n = filechooser.showOpenDialog(FileOpenerGUI.this);
+        this.XMLFile = filechooser.getSelectedFile();
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFileChooser jFileChooser1;
-    // End of variables declaration//GEN-END:variables
+    
+    public String getTextFile()
+    {
+        try
+        {
+            if(!XMLFile.getAbsolutePath().equalsIgnoreCase(null))
+            {
+                return XMLFile.getAbsolutePath();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Nessun file selezionato", "Attenzione", JOptionPane.WARNING_MESSAGE);
+                return "rubrica.xml"; 
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }
+        
+        return "rubrica.xml"; // Ritorna il file di default
+    }
 }

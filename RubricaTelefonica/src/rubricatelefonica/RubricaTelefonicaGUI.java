@@ -8,7 +8,7 @@ import java.net.URI;
 
 public class RubricaTelefonicaGUI extends javax.swing.JFrame
 {   
-    public final String defaultFileName = "rubrica.xml";
+    public String defaultFileName = "rubrica.xml";
     
     // Costruttore della classe, si occupa di richiamare il costruttore della grafica initComponents() e sistemare gli elementi grafici
     public RubricaTelefonicaGUI() 
@@ -203,7 +203,9 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
-                new FileOpenerGUI().setVisible(true);
+                FileOpenerGUI fileOpener = new FileOpenerGUI();
+                defaultFileName = fileOpener.getTextFile(); 
+                setDefaultXML();
             }
         });
 

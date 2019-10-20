@@ -28,32 +28,32 @@
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel6" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="labelIndirizzo" min="-2" pref="219" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField5" min="-2" pref="298" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel5" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="labelNumFisso" min="-2" pref="219" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField4" min="-2" pref="298" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel4" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="labelNumCellulare" min="-2" pref="219" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField3" min="-2" pref="298" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel3" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="labelCognome" min="-2" pref="219" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField2" min="-2" pref="298" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel2" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="labelNome" min="-2" pref="219" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField1" min="-2" pref="298" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel7" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="labelEmail" min="-2" pref="219" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="modifyFileButton" max="32767" attributes="0"/>
@@ -73,32 +73,32 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextField1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNome" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextField2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelCognome" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextField3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNumCellulare" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextField4" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNumFisso" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextField5" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelIndirizzo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextField6" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="modifyFileButton" min="-2" pref="46" max="-2" attributes="0"/>
@@ -127,13 +127,13 @@
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField1.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    jTextField1.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="labelNome">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Nome: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="labelCognome">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Cognome:"/>
@@ -149,7 +149,7 @@
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField2.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    jTextField2.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="labelNumCellulare">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Numero di Cellulare: "/>
@@ -165,7 +165,7 @@
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField3.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    jTextField3.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="labelNumFisso">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Numero di Telefono Fisso: "/>
@@ -181,7 +181,7 @@
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField4.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    jTextField4.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="labelIndirizzo">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Indirizzo: "/>
@@ -197,7 +197,7 @@
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField5.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    jTextField5.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="labelEmail">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Indirizzo email:"/>
