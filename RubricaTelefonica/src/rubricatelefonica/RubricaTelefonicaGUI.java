@@ -5,10 +5,16 @@ import java.util.Scanner;
 import javax.swing.*; 
 import java.awt.Desktop;
 import java.net.URI;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
 
 public class RubricaTelefonicaGUI extends javax.swing.JFrame
 {   
     public static String defaultFileName = "rubrica.xml";
+    public static DocumentBuilderFactory factory; 
+    public static DocumentBuilder builder; 
+    public static Document document; 
     
     // Costruttore della classe, si occupa di richiamare il costruttore della grafica initComponents() e sistemare gli elementi grafici
     public RubricaTelefonicaGUI() 
@@ -16,6 +22,18 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         this.setTitle("Rubrica Telefonica"); 
         this.setResizable(false);
         requestFocusInWindow(); 
+            
+                            
+        try
+        {
+            factory = DocumentBuilderFactory.newInstance();
+            builder = factory.newDocumentBuilder();
+            document = builder.parse(new File(defaultFileName));
+        }
+        catch(Exception e)
+        {
+            
+        }
         
         initComponents();
         jTextArea1.requestFocusInWindow();
@@ -220,6 +238,17 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 defaultFileName = fileOpener.getTextFile(); 
                 System.out.println(defaultFileName);
                 setDefaultXML();
+                
+                try
+                {
+                    factory = DocumentBuilderFactory.newInstance();
+                    builder = factory.newDocumentBuilder();
+                    document = builder.parse(new File(defaultFileName));
+                }
+                catch(Exception e)
+                {
+                    
+                }
             }
         });
 

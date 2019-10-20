@@ -1,17 +1,17 @@
 package rubricatelefonica;
 
-import java.io.File;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
-import javax.swing.JRadioButton;
-import javax.swing.UIManager;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
+import javax.swing.JOptionPane;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class FileModifierGUI extends javax.swing.JFrame {
-
+    
+    private boolean isAPersonSelected = false; 
+    
     public FileModifierGUI() 
     {   
         this.setTitle("Modifica un file"); 
@@ -25,6 +25,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
         bg.add(IDRadioButton);
         bg.add(NameSurnameRadio);
         IDRadioButton.setSelected(true);
+                
+        buttonID.setEnabled(true);
+        fieldID.setEditable(true);
+        fieldCognome.setEditable(false);
+        fieldNome.setEditable(false);
+        buttonSurname.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -52,13 +58,15 @@ public class FileModifierGUI extends javax.swing.JFrame {
         IDRadioButton = new javax.swing.JRadioButton();
         NameSurnameRadio = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
+        fieldNome = new javax.swing.JTextField();
+        fieldCognome = new javax.swing.JTextField();
+        buttonSurname = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
+        fieldID = new javax.swing.JTextField();
+        buttonID = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -159,8 +167,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Cerca la persona che vuoi aggiungere");
+        jLabel2.setText("Cerca la persona che vuoi modificare");
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
@@ -197,27 +206,40 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Search by");
 
+        IDRadioButton.setBackground(new java.awt.Color(204, 204, 255));
         IDRadioButton.setText("ID");
+        IDRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDRadioButtonActionPerformed(evt);
+            }
+        });
 
+        NameSurnameRadio.setBackground(new java.awt.Color(204, 204, 255));
         NameSurnameRadio.setText("Name & Surname");
+        NameSurnameRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameSurnameRadioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(IDRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(NameSurnameRadio)
-                .addGap(15, 15, 15))
+                .addGap(57, 57, 57))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,89 +252,125 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Inserisci qui il nome della persona");
-
-        jButton8.setText("Cerca");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+        fieldNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldNome.setText("Inserisci qui il nome della persona");
+        fieldNome.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if(!IDRadioButton.isSelected())
+                {
+                    fieldNome.setText("");
+                }
             }
         });
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Inserisci qui il cognome della persona");
-
-        jButton9.setText("Cerca");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+        fieldCognome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldCognome.setText("Inserisci qui il cognome della persona");
+        fieldCognome.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if(!IDRadioButton.isSelected())
+                {
+                    fieldCognome.setText("");
+                }
             }
         });
+
+        buttonSurname.setText("Cerca");
+        buttonSurname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSurnameActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Nome");
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Cognome");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton8))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton9)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(fieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(fieldCognome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonSurname)
+                .addGap(14, 14, 14))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldCognome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(buttonSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel6.setBackground(new java.awt.Color(204, 204, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("Inserisci qui l'ID della persona");
-
-        jButton10.setText("Cerca");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+        fieldID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldID.setText("Inserisci qui l'ID della persona");
+        fieldID.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if(!NameSurnameRadio.isSelected())
+                {
+                    fieldID.setText("");
+                }
             }
         });
+
+        buttonID.setText("Cerca");
+        buttonID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonIDActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("ID");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonID)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonID, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -325,14 +383,14 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -352,6 +410,10 @@ public class FileModifierGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,87 +422,150 @@ public class FileModifierGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        
-        try
-        {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(new File(RubricaTelefonicaGUI.defaultFileName));
-            document.getDocumentElement().normalize();
-            Element root = document.getDocumentElement();
-            NodeList nList = document.getElementsByTagName("employee");
-            System.out.println(root.getNodeName());
-        }
-        catch(Exception e)
+    private void deletePersonNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonNameButtonActionPerformed
+        if(isAPersonSelected)
         {
             
         }
-        
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void deletePersonNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonNameButtonActionPerformed
-        // TODO add your handling code here:
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Attenzione", "Nessuna persona è stata selezionata", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_deletePersonNameButtonActionPerformed
 
     private void deletePersonSurnameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonSurnameButtonActionPerformed
-        // TODO add your handling code here:
+               
+        if(isAPersonSelected)
+        {
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Attenzione", "Nessuna personaè stata selezionata", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_deletePersonSurnameButtonActionPerformed
 
     private void deletePersonMobileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonMobileButtonActionPerformed
-        // TODO add your handling code here:
+        if(isAPersonSelected)
+        {
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Attenzione", "Nessuna persona è stata selezionata", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_deletePersonMobileButtonActionPerformed
 
     private void deletePersonPhoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonPhoneButtonActionPerformed
-        // TODO add your handling code here:
+        if(isAPersonSelected)
+        {
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Attenzione", "Nessuna persona è stata selezionata", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_deletePersonPhoneButtonActionPerformed
 
     private void deletePersonAddressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonAddressButtonActionPerformed
-        // TODO add your handling code here:
+        if(isAPersonSelected)
+        {
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Attenzione", "Nessuna persona è stata selezionata", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_deletePersonAddressButtonActionPerformed
 
     private void deletePersonEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonEmailButtonActionPerformed
-        // TODO add your handling code here:
+        if(isAPersonSelected)
+        {
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Attenzione", "Nessuna persona è stata selezionata", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_deletePersonEmailButtonActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void buttonSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSurnameActionPerformed
+        String cognome = fieldCognome.getText(); 
+        String nome = fieldNome.getText();
+        
+        Element element = RubricaTelefonicaGUI.document.getElementById(nome);
+        Element element2 = RubricaTelefonicaGUI.document.getElementById(nome); 
+            
+        NodeList list = RubricaTelefonicaGUI.document.getElementsByTagName(nome); 
+        System.out.println(list);
+    }//GEN-LAST:event_buttonSurnameActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void buttonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIDActionPerformed
+        if(isAPersonSelected)
+        {
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Attenzione", "Nessuna persona è stata selezionata", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonIDActionPerformed
+
+    private void IDRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDRadioButtonActionPerformed
+        buttonID.setEnabled(true);
+        fieldID.setEditable(true);
+        fieldCognome.setEditable(false);
+        fieldNome.setEditable(false);
+        buttonSurname.setEnabled(false);
+        
+        fieldID.setText("Inserisci qui l'ID");
+        fieldCognome.setText("Inserisci qui il cognome");
+        fieldNome.setText("Inserisci qui il nome");
+    }//GEN-LAST:event_IDRadioButtonActionPerformed
+
+    private void NameSurnameRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameSurnameRadioActionPerformed
+        buttonID.setEnabled(false);
+        fieldID.setEditable(false);
+        fieldCognome.setEditable(true);
+        fieldNome.setEditable(true);
+        buttonSurname.setEnabled(true);
+        
+        fieldID.setText("Inserisci qui l'ID");
+        fieldCognome.setText("Inserisci qui il cognome");
+        fieldNome.setText("Inserisci qui il nome");
+    }//GEN-LAST:event_NameSurnameRadioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton IDRadioButton;
     private javax.swing.JRadioButton NameSurnameRadio;
     private javax.swing.JButton addPersonButton;
+    private javax.swing.JButton buttonID;
+    private javax.swing.JButton buttonSurname;
     private javax.swing.JButton deletePersonAddressButton;
     private javax.swing.JButton deletePersonEmailButton;
     private javax.swing.JButton deletePersonMobileButton;
     private javax.swing.JButton deletePersonNameButton;
     private javax.swing.JButton deletePersonPhoneButton;
     private javax.swing.JButton deletePersonSurnameButton;
+    private javax.swing.JTextField fieldCognome;
+    private javax.swing.JTextField fieldID;
+    private javax.swing.JTextField fieldNome;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -449,8 +574,5 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
