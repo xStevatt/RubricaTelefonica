@@ -2,6 +2,7 @@ package rubricatelefonica;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class FileCreatorGUI extends javax.swing.JFrame
@@ -183,8 +184,21 @@ public class FileCreatorGUI extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void modifyFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyFileButtonActionPerformed
-        // Modify a file
-
+        int scelta = JOptionPane.showConfirmDialog(this, "Vuoi modificatre ulteriormente la tua rubrica?", "Elemento Creato", JOptionPane.YES_NO_OPTION);
+        
+        if(scelta == 0)
+        {
+            java.awt.EventQueue.invokeLater(new Runnable() 
+            {
+                public void run() {
+                    new FileModifierGUI().setVisible(true);
+                }
+            });
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Sarai comunque in grado di modicare il tuo file più avanti!", "Ok!", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_modifyFileButtonActionPerformed
 
     public static void main(String args[]) {
