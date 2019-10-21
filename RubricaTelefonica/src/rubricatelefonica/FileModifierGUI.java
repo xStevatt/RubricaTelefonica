@@ -16,7 +16,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
     {   
         this.setTitle("Modifica un file"); 
         this.setResizable(false);
-        requestFocusInWindow();   
+        jLabel1.requestFocusInWindow();   
         
         initComponents();
         this.setLocationRelativeTo(null);
