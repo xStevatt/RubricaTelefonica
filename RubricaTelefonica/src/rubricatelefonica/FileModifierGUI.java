@@ -1,7 +1,9 @@
 package rubricatelefonica;
 
+import java.awt.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import org.w3c.dom.Element;
@@ -16,7 +18,6 @@ public class FileModifierGUI extends javax.swing.JFrame {
     {   
         this.setTitle("Modifica un file"); 
         this.setResizable(false);
-        jLabel1.requestFocusInWindow();   
         
         initComponents();
         this.setLocationRelativeTo(null);
@@ -500,12 +501,33 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private void buttonSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSurnameActionPerformed
         String cognome = fieldCognome.getText(); 
         String nome = fieldNome.getText();
+                   
+        NodeList nodeList = RubricaTelefonicaGUI.document.getElementsByTagName("firstname");
         
-        Element element = RubricaTelefonicaGUI.document.getElementById(nome);
-        Element element2 = RubricaTelefonicaGUI.document.getElementById(nome); 
-            
-        NodeList list = RubricaTelefonicaGUI.document.getElementsByTagName(nome); 
-        System.out.println(list);
+        if(nodeList == null)
+        {
+            System.out.println("rip");
+        }
+        
+        for (int temp = 0; temp < nodeList.getLength(); temp++) 
+        {
+		Node nNode = nodeList.item(temp);
+				
+		if (nNode.getNodeType() == Node.ELEMENT_NODE) 
+                {       
+                    			
+                    Element eElement = (Element) nNode;
+                    eElement.getAttribute("fristname"); 
+                    
+                    if(eElement.getElementsByTagName("employee").item(0).getTextContent() == nome)
+                    {
+                        jTextArea1.append(eElement.getElementsByTagName("firstname").item(0).getTextContent());
+                        jTextArea1.append(eElement.getElementsByTagName("lastname").item(0).getTextContent());
+                        jTextArea1.append(eElement.getElementsByTagName("email").item(0).getTextContent());
+                        jTextArea1.append(eElement.getElementsByTagName("department").item(0).getTextContent());
+                    }
+		}
+        }   
     }//GEN-LAST:event_buttonSurnameActionPerformed
 
     private void buttonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIDActionPerformed
