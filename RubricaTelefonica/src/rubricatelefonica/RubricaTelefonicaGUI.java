@@ -91,6 +91,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         openInBroswer = new javax.swing.JButton();
         openInBroswer1 = new javax.swing.JButton();
         openInBroswer2 = new javax.swing.JButton();
+        openInBroswer3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,9 +153,18 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
 
         openInBroswer2.setBackground(new java.awt.Color(0, 153, 153));
         openInBroswer2.setText("Cerca nel file");
+        openInBroswer2.setPreferredSize(new java.awt.Dimension(102, 32));
         openInBroswer2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openInBroswer2ActionPerformed(evt);
+            }
+        });
+
+        openInBroswer3.setBackground(new java.awt.Color(0, 153, 153));
+        openInBroswer3.setText("Table View");
+        openInBroswer3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openInBroswer3ActionPerformed(evt);
             }
         });
 
@@ -167,35 +177,37 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator1)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator1))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
                 .addComponent(modifyFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(openFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(createFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addGap(55, 55, 55))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(openInBroswer)
-                .addGap(38, 38, 38)
-                .addComponent(openInBroswer2)
                 .addGap(35, 35, 35)
-                .addComponent(openInBroswer1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(openInBroswer)
+                .addGap(30, 30, 30)
+                .addComponent(openInBroswer2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(openInBroswer3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(openInBroswer1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,9 +227,10 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(openInBroswer)
-                    .addComponent(openInBroswer1)
-                    .addComponent(openInBroswer2))
+                    .addComponent(openInBroswer2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openInBroswer, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openInBroswer1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openInBroswer3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -244,6 +257,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                     factory = DocumentBuilderFactory.newInstance();
                     builder = factory.newDocumentBuilder();
                     document = builder.parse(new File(defaultFileName));
+                    document.getDocumentElement().normalize(); // normalizza il file
                 }
                 catch(Exception e)
                 {
@@ -325,8 +339,17 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     }//GEN-LAST:event_openInBroswer1ActionPerformed
 
     private void openInBroswer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer2ActionPerformed
-        // TODO add your handling code here:
+                java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            public void run() {
+                new FileSearchGUI().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_openInBroswer2ActionPerformed
+
+    private void openInBroswer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_openInBroswer3ActionPerformed
 
     public static void main(String args[]) 
     {   
@@ -363,5 +386,6 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     private javax.swing.JButton openInBroswer;
     private javax.swing.JButton openInBroswer1;
     private javax.swing.JButton openInBroswer2;
+    private javax.swing.JButton openInBroswer3;
     // End of variables declaration//GEN-END:variables
 }

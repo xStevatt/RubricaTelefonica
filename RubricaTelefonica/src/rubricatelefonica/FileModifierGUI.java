@@ -68,6 +68,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         fieldID = new javax.swing.JTextField();
         buttonID = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -134,7 +135,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(deletePersonSurnameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(deletePersonNameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -183,6 +184,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton1.setText("Elimina persona");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         addPersonButton.setText("Aggiungi Persona");
 
@@ -362,7 +368,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addComponent(fieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonID)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,6 +380,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Puoi modificare una persona sola, prova a cercare by ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,8 +406,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(5, 5, 5))))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,21 +419,21 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -501,35 +511,55 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private void buttonSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSurnameActionPerformed
         String cognome = fieldCognome.getText(); 
         String nome = fieldNome.getText();
-                   
-        NodeList nodeList = RubricaTelefonicaGUI.document.getElementsByTagName("firstname");
+        
+        NodeList nodeList = RubricaTelefonicaGUI.document.getElementsByTagName("employee");
         
         if(nodeList == null)
         {
             System.out.println("rip");
         }
+        jTextArea1.append("<rubrica>" + "\n");
         
-        for (int temp = 0; temp < nodeList.getLength(); temp++) 
+        for (int i = 0; i < nodeList.getLength(); i++) 
         {
-		Node nNode = nodeList.item(temp);
-				
-		if (nNode.getNodeType() == Node.ELEMENT_NODE) 
-                {       
-                    			
-                    Element eElement = (Element) nNode;
-                    eElement.getAttribute("fristname"); 
-                    
-                    if(eElement.getElementsByTagName("employee").item(0).getTextContent() == nome)
-                    {
-                        jTextArea1.append(eElement.getElementsByTagName("firstname").item(0).getTextContent());
-                        jTextArea1.append(eElement.getElementsByTagName("lastname").item(0).getTextContent());
-                        jTextArea1.append(eElement.getElementsByTagName("email").item(0).getTextContent());
-                        jTextArea1.append(eElement.getElementsByTagName("department").item(0).getTextContent());
-                    }
-		}
-        }   
-    }//GEN-LAST:event_buttonSurnameActionPerformed
+            Node nNode = nodeList.item(i);
+            
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) 
+            {
 
+                Element elem = (Element) nNode;
+
+                Node node1 = elem.getElementsByTagName("firstname").item(0);
+                Node node2 = elem.getElementsByTagName("lastname").item(0); 
+                String fname = node1.getTextContent();
+                String fsurname = node2.getTextContent(); 
+                        
+                if(fname.equals(nome) && fsurname.equals(cognome))
+                {
+                    Node el1 = elem.getElementsByTagName("firstname").item(0);
+                    String nomeStringato = el1.getTextContent();
+                    
+                    Node el2 = elem.getElementsByTagName("lastname").item(0);
+                    String cognomeStringato = el2.getTextContent();
+                    Node el3 = elem.getElementsByTagName("email").item(0);
+                    String emailStringato = el3.getTextContent();
+                    Node el4 = elem.getElementsByTagName("department").item(0);
+                    String depStringato = el4.getTextContent(); 
+                          
+                    
+                    jTextArea1.append(" <employee>" + "\n");
+                    jTextArea1.append("     <name>" + nomeStringato + "</name>" + "\n");
+                    jTextArea1.append("     <lastname>" + cognomeStringato + "</lastname>" + "\n"); 
+                    jTextArea1.append("     <email>" + emailStringato + "</email>" + "\n");
+                    jTextArea1.append("     <deparment>" + depStringato + "</deparment>" + "\n");
+                    jTextArea1.append(" </employee>" + "\n\n");
+                }
+            }
+        }
+        jTextArea1.append("</rubrica>" + "\n");
+    }//GEN-LAST:event_buttonSurnameActionPerformed
+    
+    
     private void buttonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIDActionPerformed
         if(isAPersonSelected)
         {
@@ -565,6 +595,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
         fieldNome.setText("Inserisci qui il nome");
     }//GEN-LAST:event_NameSurnameRadioActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        // open a joption pane, be sure to ask and check the input
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton IDRadioButton;
     private javax.swing.JRadioButton NameSurnameRadio;
@@ -588,6 +624,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
