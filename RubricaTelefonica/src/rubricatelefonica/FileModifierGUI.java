@@ -609,7 +609,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
             String idPersona;
             idPersona = JOptionPane.showInputDialog("Inserisci l'id della persona da eliminare");
             idNumber = Integer.parseInt(idPersona); 
-        }while(idNumber <= 0 || idNumber.);
+            
+            Element element = (Element) RubricaTelefonicaGUI.document.getElementsByTagName(idPersona).item(0);
+        }while(idNumber <= 0 || idNumber > numeroPersone);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

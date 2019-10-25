@@ -377,23 +377,25 @@ public class FileSearchGUI extends javax.swing.JFrame {
                 String fname = node1.getTextContent();
                 String fsurname = node2.getTextContent();
 
-                if(fname.equals(nome) && fsurname.equals(cognome))
+                if(fname.equalsIgnoreCase(nome) && fsurname.equalsIgnoreCase(cognome))
                 {
                     Node el1 = elem.getElementsByTagName("firstname").item(0);
                     String nomeStringato = el1.getTextContent();
-
+                    
                     Node el2 = elem.getElementsByTagName("lastname").item(0);
                     String cognomeStringato = el2.getTextContent();
+                    
                     Node el3 = elem.getElementsByTagName("email").item(0);
                     String emailStringato = el3.getTextContent();
+                    
                     Node el4 = elem.getElementsByTagName("department").item(0);
                     String depStringato = el4.getTextContent();
 
                     jTextArea1.append(" <employee>" + "\n");
                     jTextArea1.append("     <name>" + nomeStringato + "</name>" + "\n");
-                    jTextArea1.append("     <lastname>" + nomeStringato + "</lastname>" + "\n");
-                    jTextArea1.append("     <email>" + nomeStringato + "</email>" + "\n");
-                    jTextArea1.append("     <deparment>" + nomeStringato + "</deparment>" + "\n");
+                    jTextArea1.append("     <lastname>" + cognomeStringato + "</lastname>" + "\n");
+                    jTextArea1.append("     <email>" + emailStringato + "</email>" + "\n");
+                    jTextArea1.append("     <deparment>" + depStringato + "</deparment>" + "\n");
                     jTextArea1.append(" </employee>" + "\n\n");
                 }
             }
