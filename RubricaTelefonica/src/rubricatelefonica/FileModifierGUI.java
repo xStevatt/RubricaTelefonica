@@ -13,6 +13,7 @@ import org.w3c.dom.NodeList;
 public class FileModifierGUI extends javax.swing.JFrame {
     
     private boolean isAPersonSelected = false; 
+    private int numeroPersone = 0; 
     
     public FileModifierGUI() 
     {   
@@ -21,6 +22,8 @@ public class FileModifierGUI extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(null);
+        NodeList nodeList = RubricaTelefonicaGUI.document.getElementsByTagName("employee");
+        this.numeroPersone = nodeList.getLength(); 
         
         ButtonGroup bg = new ButtonGroup(); 
         bg.add(IDRadioButton);
@@ -599,6 +602,14 @@ public class FileModifierGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // open a joption pane, be sure to ask and check the input
+        int idNumber; 
+        
+        do
+        {
+            String idPersona;
+            idPersona = JOptionPane.showInputDialog("Inserisci l'id della persona da eliminare");
+            idNumber = Integer.parseInt(idPersona); 
+        }while(idNumber <= 0 || idNumber.);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
