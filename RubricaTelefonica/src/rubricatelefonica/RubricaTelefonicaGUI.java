@@ -5,8 +5,11 @@ import java.util.Scanner;
 import javax.swing.*; 
 import java.awt.Desktop;
 import java.net.URI;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPathExpressionException;
 import org.w3c.dom.Document;
 
 public class RubricaTelefonicaGUI extends javax.swing.JFrame
@@ -226,10 +229,10 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(openInBroswer2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(openInBroswer, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(openInBroswer1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openInBroswer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openInBroswer1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(openInBroswer3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,13 +345,22 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
-                new FileSearchGUI().setVisible(true);
+                //new FileSearchGUI().setVisible(true);
             }
         });
     }//GEN-LAST:event_openInBroswer2ActionPerformed
 
     private void openInBroswer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer3ActionPerformed
-        // TODO add your handling code here:
+                java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            public void run() {
+                try {
+                    new TableViewGUI().setVisible(true);
+                } catch (XPathExpressionException ex) {
+                    Logger.getLogger(RubricaTelefonicaGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }//GEN-LAST:event_openInBroswer3ActionPerformed
 
     public static void main(String args[]) 

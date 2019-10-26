@@ -1,72 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<company>
-	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
+<rubrica>
+	<person id="0">
+		<firstname>Stefano</firstname>
+		<lastname>Valloncini</lastname>
+		<email>stefanovalloncini@protonmail.com</email>
+		<telephone>3394475795</telephone>
+		<numero_interno>101</numero_interno>
+	</person>
 
-	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
+	<person id="1">
+		<firstname>Mattia</firstname>
+		<lastname>Pezzotti</lastname>
+		<email>mattiapezzotti@gmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>102</numero_interno>
+	</person>
 
-    	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
+	<person id="2">
+		<firstname>Matteo</firstname>
+		<lastname>Botti</lastname>
+		<email>matteobotti@gmail.com</email>
+		<telephone>123123123</telephone>
+		<numero_interno>103</numero_interno>
+	</person>
 
-    	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
+	<person id="4">
+		<firstname>Gaetano</firstname>
+		<lastname>Scandale</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>104</numero_interno>
+	</person>
 
-    	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
+	<person id="5">
+		<firstname>Gaetano</firstname>
+		<lastname>Scandale</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>104</numero_interno>
+	</person>
 
-    	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
+	<person id="6">
+		<firstname>Gaetano</firstname>
+		<lastname>Scandale</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>104</numero_interno>
+	</person>
 
-    	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
+	<person id="7">
+		<firstname>Gaetano</firstname>
+		<lastname>Scandale</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>104</numero_interno>
+	</person>
 
-    	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
-
-    	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
-
-    	<employee id="10">
-		<firstname>James</firstname>
-		<lastname>Harley</lastname>
-		<email>james@example.org</email>
-		<department>Human Resources</department>
-	</employee>
-</company>
+</rubrica>
