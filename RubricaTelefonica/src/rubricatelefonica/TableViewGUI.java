@@ -26,6 +26,7 @@ public class TableViewGUI extends javax.swing.JFrame {
         loadTable();
         this.setVisible(false);
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
     
         

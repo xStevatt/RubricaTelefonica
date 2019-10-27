@@ -116,15 +116,14 @@
                       <Component id="deletePersonSurnameButton" max="32767" attributes="0"/>
                       <Component id="deletePersonNameButton" max="32767" attributes="0"/>
                       <Component id="deletePersonMobileButton" alignment="0" max="32767" attributes="0"/>
-                      <Component id="deletePersonPhoneButton" alignment="0" max="32767" attributes="0"/>
-                      <Component id="deletePersonAddressButton" alignment="0" max="32767" attributes="0"/>
+                      <Component id="deleteNumeroInterno" alignment="0" max="32767" attributes="0"/>
                       <Component id="deletePersonEmailButton" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" max="32767" attributes="0"/>
+                  <Component id="personSelectedLabel" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -133,7 +132,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="personSelectedLabel" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="deletePersonNameButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -141,12 +140,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="deletePersonMobileButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="deletePersonPhoneButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="deletePersonAddressButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="deleteNumeroInterno" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="deletePersonEmailButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace pref="76" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -185,26 +182,15 @@
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="deletePersonMobileButton.setEnabled(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="deletePersonPhoneButton">
+        <Component class="javax.swing.JButton" name="deleteNumeroInterno">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Elimina Fisso persona"/>
+            <Property name="text" type="java.lang.String" value="Elimina Numero Interno"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePersonPhoneButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteNumeroInternoActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="deletePersonPhoneButton.setEnabled(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="deletePersonAddressButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Elimina Indirizzo persona"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePersonAddressButtonActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="deletePersonAddressButton.setEnabled(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="deleteNumeroInterno.setEnabled(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="deletePersonEmailButton">
@@ -218,7 +204,7 @@
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="deletePersonEmailButton.setEnabled(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="personSelectedLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Nessuna Persona Selezionata"/>
@@ -500,13 +486,13 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="fieldID" min="-2" pref="166" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="fieldID" min="-2" pref="166" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="buttonID" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

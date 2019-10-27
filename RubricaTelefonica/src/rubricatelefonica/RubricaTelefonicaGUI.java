@@ -345,7 +345,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
-                //new FileSearchGUI().setVisible(true);
+                new FileSearchGUI().setVisible(true);
             }
         });
     }//GEN-LAST:event_openInBroswer2ActionPerformed
