@@ -183,6 +183,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setSelectionColor(new java.awt.Color(255, 153, 153));
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -231,6 +232,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 "ID", "Nome", "Cognome", "Email", "Cellulare", "Numero di Interno"
             }
         ));
+        jTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
