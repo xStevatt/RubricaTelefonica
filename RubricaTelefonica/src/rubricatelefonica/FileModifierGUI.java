@@ -6,6 +6,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -259,10 +262,21 @@ public class FileModifierGUI extends javax.swing.JFrame {
         fieldNome.setText("Inserisci qui il nome");
         fieldNome.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                if(!IDRadioButton.isSelected())
+                if(NameSurnameRadio.isSelected())
                 {
                     fieldNome.setText("");
+                    personSelectedLabel.setText("Nessuna Persona Selezionata");
+                    deletePersonNameButton.setEnabled(false);
+                    deletePersonSurnameButton.setEnabled(false);
+                    deletePersonMobileButton.setEnabled(false);
+                    deletePersonEmailButton.setEnabled(false);
+                    deleteNumeroInterno.setEnabled(false);
                 }
+            }
+        });
+        fieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNomeActionPerformed(evt);
             }
         });
 
@@ -273,6 +287,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 if(!IDRadioButton.isSelected())
                 {
                     fieldCognome.setText("");
+                    personSelectedLabel.setText("Nessuna Persona Selezionata");
+                    deletePersonNameButton.setEnabled(false);
+                    deletePersonSurnameButton.setEnabled(false);
+                    deletePersonMobileButton.setEnabled(false);
+                    deletePersonEmailButton.setEnabled(false);
+                    deleteNumeroInterno.setEnabled(false);
                 }
             }
         });
@@ -336,6 +356,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 if(!NameSurnameRadio.isSelected())
                 {
                     fieldID.setText("");
+                    personSelectedLabel.setText("Nessuna Persona Selezionata");
+                    deletePersonNameButton.setEnabled(false);
+                    deletePersonSurnameButton.setEnabled(false);
+                    deletePersonMobileButton.setEnabled(false);
+                    deletePersonEmailButton.setEnabled(false);
+                    deleteNumeroInterno.setEnabled(false);
                 }
             }
         });
@@ -538,6 +564,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
         String cognome = fieldCognome.getText(); 
         String nome = fieldNome.getText();
         
+        // Initialize
+        isOnePersonSelected = false; 
+        posizionePersona = 0; 
+        elementsFound = 0; 
+        jTextArea1.setText("");
+        
         NodeList nodeList = RubricaTelefonicaGUI.document.getElementsByTagName("person");
         
         if(nodeList == null)
@@ -558,7 +590,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 Node node2 = elem.getElementsByTagName("lastname").item(0); 
                 String fname = node1.getTextContent();
                 String fsurname = node2.getTextContent(); 
-                        
+                
                 if(fname.equals(nome) && fsurname.equals(cognome))
                 {   
                     elementsFound++; 
@@ -589,7 +621,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                     jTextArea1.append("     <firstname>" + nomeStringato + "</firstname>" + "\n");
                     jTextArea1.append("     <lastname>" + cognomeStringato + "</lastname>" + "\n"); 
                     jTextArea1.append("     <email>" + emailStringato + "</email>" + "\n");
-                    jTextArea1.append("     <telephone>" + depStringato + "</deparment>" + "\n");
+                    jTextArea1.append("     <telephone>" + depStringato + "</telephone>" + "\n");
                     jTextArea1.append("     <numero_interno>" + internoStringato + "</numero_interno>" + "\n");
                     jTextArea1.append(" </person>" + "\n");
                 }
@@ -609,11 +641,73 @@ public class FileModifierGUI extends javax.swing.JFrame {
             deletePersonEmailButton.setEnabled(true);
             deleteNumeroInterno.setEnabled(true);
         }
+        
+        if(elementsFound > 1)
+        {
+            personSelectedLabel.setText(elementsFound + " persone trovate");
+        }
+        
+        if(elementsFound == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Nessun elemento trovato!");
+        }
     }//GEN-LAST:event_buttonSurnameActionPerformed
     
     
     private void buttonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIDActionPerformed
+               
+        Element element = null; 
+        XPathFactory xpathFactory; 
+        XPath xpath; 
+        jTextArea1.setText("");
+        
+        int numero = 0; 
+        boolean erroreConversione = false; 
+        
+        try
+        {
+            numero = Integer.parseInt(fieldID.getText()); 
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Inserisci un numero valido", "Attenzione", JOptionPane.WARNING_MESSAGE);
+            fieldID.setText("");
+            erroreConversione = true; 
+        }
+        
+        if(!erroreConversione)
+        {
+            try
+            {
+                xpathFactory = XPathFactory.newInstance();
+                xpath = xpathFactory.newXPath();
+                element = (Element) xpath.evaluate("//*[@id='" + numero + "']", RubricaTelefonicaGUI.document, XPathConstants.NODE);
+            }
+            catch(Exception e)
+            {
 
+            }
+                                
+            Node el1 = element.getElementsByTagName("firstname").item(0);
+            String nomeStringato = el1.getTextContent();
+            Node el2 = element.getElementsByTagName("lastname").item(0);
+            String cognomeStringato = el2.getTextContent();
+            Node el3 = element.getElementsByTagName("email").item(0);
+            String emailStringato = el3.getTextContent();
+            Node el4 = element.getElementsByTagName("telephone").item(0);
+            String depStringato = el4.getTextContent(); 
+            Node el5 = element.getElementsByTagName("numero_interno").item(0);
+            String internoStringato = el5.getTextContent();     
+            
+                                
+            jTextArea1.append(" <person>" + "\n");
+            jTextArea1.append("     <firstname>" + nomeStringato + "</firstname>" + "\n");
+            jTextArea1.append("     <lastname>" + cognomeStringato + "</lastname>" + "\n"); 
+            jTextArea1.append("     <email>" + emailStringato + "</email>" + "\n");
+            jTextArea1.append("     <telephone>" + depStringato + "</telephone>" + "\n");
+            jTextArea1.append("     <numero_interno>" + internoStringato + "</numero_interno>" + "\n");
+            jTextArea1.append(" </person>" + "\n");
+        }
     }//GEN-LAST:event_buttonIDActionPerformed
 
     private void IDRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDRadioButtonActionPerformed
@@ -655,6 +749,10 @@ public class FileModifierGUI extends javax.swing.JFrame {
             Element element = (Element) RubricaTelefonicaGUI.document.getElementsByTagName(idPersona).item(0);
         }while(idNumber <= 0 || idNumber > numeroPersone);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNomeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton IDRadioButton;

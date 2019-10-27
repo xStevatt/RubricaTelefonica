@@ -22,6 +22,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     public static DocumentBuilderFactory factory; 
     public static DocumentBuilder builder; 
     public static Document document; 
+    public int contatore = 0; 
     
     // Costruttore della classe, si occupa di richiamare il costruttore della grafica initComponents() e sistemare gli elementi grafici
     public RubricaTelefonicaGUI() 
@@ -61,7 +62,20 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         
     public void loadTable() throws XPathExpressionException
     {   
-        NodeList nodeList = RubricaTelefonicaGUI.document.getElementsByTagName("person");
+               
+        System.out.println(defaultFileName);
+        System.out.println("here");
+        try
+        {
+            factory = DocumentBuilderFactory.newInstance();
+            builder = factory.newDocumentBuilder();
+            document = builder.parse(new File(defaultFileName));
+        }
+        catch(Exception e)
+        {
+        }
+        
+        NodeList nodeList = document.getElementsByTagName("person");
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel(); 
         Object[] rowData = new Object[6]; 
         
@@ -69,9 +83,11 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         {   
             Node nNode = nodeList.item(i);
             Element elem = (Element) nNode;
+            contatore++; 
             
             Node el1 = elem.getElementsByTagName("firstname").item(0);
             String nomeStringato = el1.getTextContent();
+            System.out.println(nomeStringato);
             Node el2 = elem.getElementsByTagName("lastname").item(0);
             String cognomeStringato = el2.getTextContent();
             Node el3 = elem.getElementsByTagName("email").item(0);
@@ -81,7 +97,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             Node el5 = elem.getElementsByTagName("numero_interno").item(0);
             String intStringato = el5.getTextContent();
             
-            rowData[0] = i; 
+            rowData[0] = contatore; 
             rowData[1] = nomeStringato; 
             rowData[2] = cognomeStringato; 
             rowData[3] = emailStringato; 
@@ -94,6 +110,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     // Questo metodo si occupa di mostrare a schermo il file XML che è stato preso dalla cartella del progetto
     public void setDefaultXML()
     {   
+        jTextArea1.setText("");
         try
         {
             Scanner fileReader = new Scanner(new File(defaultFileName)); 
@@ -246,7 +263,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
@@ -257,19 +274,13 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator1))))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator1))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(18, 18, 18)
@@ -328,14 +339,22 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
 
     private void openFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openFileButtonActionPerformed
         // Open a file
-               
         java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
                 FileOpenerGUI fileOpener = new FileOpenerGUI();
                 defaultFileName = fileOpener.getTextFile(); 
                 System.out.println(defaultFileName);
-                setDefaultXML();
+                                
+                try
+                {   
+                    setDefaultXML(); 
+                    loadTable();
+                }
+                catch(Exception e)
+                {
+
+                }
                 
                 try
                 {
@@ -349,19 +368,21 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                     
                 }
             }
-        });
+        }); 
+        
 
     }//GEN-LAST:event_openFileButtonActionPerformed
 
     private void modifyFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyFileButtonActionPerformed
         // Modify a file
-        
+        setDefaultXML();
         java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
                 new FileModifierGUI().setVisible(true);
             }
         });
+                setDefaultXML(); 
     }//GEN-LAST:event_modifyFileButtonActionPerformed
 
     private void createFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createFileButtonActionPerformed
@@ -373,9 +394,11 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 new FileCreatorGUI().setVisible(true);
             }
         });
+                setDefaultXML(); 
     }//GEN-LAST:event_createFileButtonActionPerformed
 
     private void openInBroswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswerActionPerformed
+        setDefaultXML();
         
         int choice = JOptionPane.showConfirmDialog(this, "Vuoi aprire il file nel tuo broswer?");
             
@@ -397,10 +420,12 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 System.err.println("Errore nell'apertura del broswer");
             }
         }
+                setDefaultXML(); 
     }//GEN-LAST:event_openInBroswerActionPerformed
 
     private void openInBroswer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer1ActionPerformed
                 
+        setDefaultXML();
         int choice = JOptionPane.showConfirmDialog(this, "Vuoi aprire il file nel blocco note?");
             
         if(choice == 0)
@@ -421,15 +446,18 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 System.err.println("Errore nell'apertura del broswer");
             }
         }
+                setDefaultXML(); 
     }//GEN-LAST:event_openInBroswer1ActionPerformed
 
     private void openInBroswer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer2ActionPerformed
-                java.awt.EventQueue.invokeLater(new Runnable() 
+        setDefaultXML();
+        java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
                 new FileSearchGUI().setVisible(true);
             }
         });
+                setDefaultXML(); 
     }//GEN-LAST:event_openInBroswer2ActionPerformed
 
     private void openInBroswer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer3ActionPerformed
@@ -443,6 +471,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 }
             }
         });
+                        setDefaultXML(); 
     }//GEN-LAST:event_openInBroswer3ActionPerformed
 
     public static void main(String args[]) 

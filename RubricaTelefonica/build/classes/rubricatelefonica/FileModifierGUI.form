@@ -431,8 +431,11 @@
               <Connection code="&quot;Inserisci qui il nome&quot;" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldNomeActionPerformed"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldNome.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    if(!IDRadioButton.isSelected())&#xa;    {&#xa;        fieldNome.setText(&quot;&quot;);&#xa;    }&#xa;  }&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldNome.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    if(NameSurnameRadio.isSelected())&#xa;    {   &#xa;        fieldNome.setText(&quot;&quot;);&#xa;        personSelectedLabel.setText(&quot;Nessuna Persona Selezionata&quot;);&#xa;        deletePersonNameButton.setEnabled(false);&#xa;        deletePersonSurnameButton.setEnabled(false);&#xa;        deletePersonMobileButton.setEnabled(false);&#xa;        deletePersonEmailButton.setEnabled(false);&#xa;        deleteNumeroInterno.setEnabled(false);&#xa;    }&#xa;  }&#xa;});"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldCognome">
@@ -443,7 +446,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldCognome.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    if(!IDRadioButton.isSelected())&#xa;    {&#xa;        fieldCognome.setText(&quot;&quot;);&#xa;    }&#xa;  }&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldCognome.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    if(!IDRadioButton.isSelected())&#xa;    {&#xa;        fieldCognome.setText(&quot;&quot;);&#xa;        personSelectedLabel.setText(&quot;Nessuna Persona Selezionata&quot;);&#xa;        deletePersonNameButton.setEnabled(false);&#xa;        deletePersonSurnameButton.setEnabled(false);&#xa;        deletePersonMobileButton.setEnabled(false);&#xa;        deletePersonEmailButton.setEnabled(false);&#xa;        deleteNumeroInterno.setEnabled(false);&#xa;    }&#xa;  }&#xa;});"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="buttonSurname">
@@ -519,7 +522,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldID.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    if(!NameSurnameRadio.isSelected())&#xa;    {&#xa;        fieldID.setText(&quot;&quot;);&#xa;    }&#xa;  }&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldID.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    if(!NameSurnameRadio.isSelected())&#xa;    {&#xa;        fieldID.setText(&quot;&quot;);&#xa;        personSelectedLabel.setText(&quot;Nessuna Persona Selezionata&quot;);&#xa;        deletePersonNameButton.setEnabled(false);&#xa;        deletePersonSurnameButton.setEnabled(false);&#xa;        deletePersonMobileButton.setEnabled(false);&#xa;        deletePersonEmailButton.setEnabled(false);&#xa;        deleteNumeroInterno.setEnabled(false);&#xa;    }&#xa;  }&#xa;});"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="buttonID">

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rubrica>
+	<person id="0">
+		<firstname>Oscar </firstname>
+		<lastname>Vaughn</lastname>
+		<email>comevalavita@protonmail.com</email>
+		<telephone>13123123123</telephone>
+		<numero_interno>101</numero_interno>
+	</person>
+
+	<person id="1">
+		<firstname>Colonel </firstname>
+		<lastname>Buckshot</lastname>
+		<email>mattiapezzotti@gmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>102</numero_interno>
+	</person>
+
+	<person id="2">
+		<firstname>Ironhorse</firstname>
+		<lastname>Ironhorse</lastname>
+		<email>Ironhorse@gmail.com</email>
+		<telephone>123123123</telephone>
+		<numero_interno>103</numero_interno>
+	</person>
+
+	<person id="3">
+		<firstname>Serena</firstname>
+		<lastname>Angel</lastname>
+		<email>JupiterLay@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>104</numero_interno>
+	</person>
+
+	<person id="4">
+		<firstname>JupiterLay</firstname>
+		<lastname>Scandale</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>104</numero_interno>
+	</person>
+
+	<person id="5">
+		<firstname>Gaetano</firstname>
+		<lastname>Scandale</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>104</numero_interno>
+	</person>
+</rubrica>

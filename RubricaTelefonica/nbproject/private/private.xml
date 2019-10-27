@@ -5,7 +5,7 @@
             <url>src/rubricatelefonica/RubricaTelefonicaGUI.java</url>
             <bookmark id="1">
                 <name/>
-                <line>38</line>
+                <line>43</line>
                 <key/>
             </bookmark>
         </file>
@@ -17,6 +17,7 @@
             <file>file:/C:/Users/Stefano/Desktop/Github/RubricaTelefonica/RubricaTelefonica/src/rubricatelefonica/FileModifierGUI.java</file>
             <file>file:/C:/Users/Stefano/Desktop/Github/RubricaTelefonica/RubricaTelefonica/src/rubricatelefonica/FileCreatorGUI.java</file>
             <file>file:/C:/Users/Stefano/Desktop/Github/RubricaTelefonica/RubricaTelefonica/src/rubricatelefonica/TableViewGUI.java</file>
+            <file>file:/C:/Users/Stefano/Desktop/Github/RubricaTelefonica/RubricaTelefonica/src/rubricatelefonica/FileSearchGUI.java</file>
         </group>
     </open-files>
 </project-private>

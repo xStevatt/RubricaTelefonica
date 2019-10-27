@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rubrica>
+	<person id="0">
+		<firstname>Chiara</firstname>
+		<lastname>Valloncini</lastname>
+		<email>chiaravalloncini@protonmail.com</email>
+		<telephone>123412341234</telephone>
+		<numero_interno>101</numero_interno>
+	</person>
+
+	<person id="1">
+		<firstname>Marco</firstname>
+		<lastname>Pezzotti</lastname>
+		<email>marcopezzotti@gmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>102</numero_interno>
+	</person>
+
+	<person id="2">
+		<firstname>Maria</firstname>
+		<lastname>Botti</lastname>
+		<email>mariabotti@gmail.com</email>
+		<telephone>123123123</telephone>
+		<numero_interno>103</numero_interno>
+	</person>
+
+	<person id="3">
+		<firstname>Mattia</firstname>
+		<lastname>Scandale</lastname>
+		<email>asdasdasdd@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>104</numero_interno>
+	</person>
+
+	<person id="4">
+		<firstname>Marzio</firstname>
+		<lastname>Sandale</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>105</numero_interno>
+	</person>
+
+	<person id="5">
+		<firstname>John</firstname>
+		<lastname>Travolta</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>123123</telephone>
+		<numero_interno>106</numero_interno>
+	</person>
+
+	<person id="6">
+		<firstname>Leonardo</firstname>
+		<lastname>Dicaprio</lastname>
+		<email>leonardodicaprio@protonmail.com</email>
+		<telephone>123123</telephone>
+		<numero_interno>107</numero_interno>
+	</person>
+
+	<person id="7">
+		<firstname>Gaetano</firstname>
+		<lastname>Garofalo</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>108</numero_interno>
+	</person>
+
+	<person id="8">
+		<firstname>Pierluigi</firstname>
+		<lastname>Il grande</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>109</numero_interno>
+	</person>
+
+	<person id="9">
+		<firstname>Cavallo</firstname>
+		<lastname>Catamarano</lastname>
+		<email>gaetanoscandale@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>110</numero_interno>
+	</person>
+
+	<person id="10">
+		<firstname>Angela</firstname>
+		<lastname>Boldini</lastname>
+		<email>angleaboldini@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>111</numero_interno>
+	</person>
+
+	<person id="11">
+		<firstname>Simone</firstname>
+		<lastname>Bonetti</lastname>
+		<email>simonebonetti@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>112</numero_interno>
+	</person>
+
+	<person id="12">
+		<firstname>Mr.</firstname>
+		<lastname>Who</lastname>
+		<email>whoami@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>113</numero_interno>
+	</person>
+
+	<person id="13">
+		<firstname>Gaetano</firstname>
+		<lastname>Mauzzi</lastname>
+		<email>lolololol@protonmail.com</email>
+		<telephone>3123123123</telephone>
+		<numero_interno>114</numero_interno>
+	</person>
+</rubrica>
