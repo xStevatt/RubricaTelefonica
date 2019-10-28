@@ -64,7 +64,6 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     {   
                
         System.out.println(defaultFileName);
-        System.out.println("here");
         try
         {
             factory = DocumentBuilderFactory.newInstance();
@@ -85,24 +84,40 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             Element elem = (Element) nNode;
             contatore++; 
             
-            Node el1 = elem.getElementsByTagName("firstname").item(0);
-            String nomeStringato = el1.getTextContent();
-            System.out.println(nomeStringato);
-            Node el2 = elem.getElementsByTagName("lastname").item(0);
-            String cognomeStringato = el2.getTextContent();
-            Node el3 = elem.getElementsByTagName("email").item(0);
-            String emailStringato = el3.getTextContent();
-            Node el4 = elem.getElementsByTagName("telephone").item(0);
-            String depStringato = el4.getTextContent();  
-            Node el5 = elem.getElementsByTagName("numero_interno").item(0);
-            String intStringato = el5.getTextContent();
+            String nomeString = null; 
+            String cognomeString = null; 
+            String emailString = null; 
+            String telephoneString = null; 
+            String numeroInternoString = null; 
+            
+            try
+            {
+                Node el1 = elem.getElementsByTagName("firstname").item(0);
+                nomeString= el1.getTextContent();
+                
+                Node el2 = elem.getElementsByTagName("lastname").item(0);
+                cognomeString = el2.getTextContent();
+                
+                Node el3 = elem.getElementsByTagName("email").item(0);
+                emailString = el3.getTextContent();
+                
+                Node el4 = elem.getElementsByTagName("telephone").item(0);
+                telephoneString = el4.getTextContent();
+                
+                Node el5 = elem.getElementsByTagName("numero_interno").item(0);
+                numeroInternoString = el5.getTextContent();
+            }
+            catch(Exception e)
+            {
+                
+            }
             
             rowData[0] = contatore; 
-            rowData[1] = nomeStringato; 
-            rowData[2] = cognomeStringato; 
-            rowData[3] = emailStringato; 
-            rowData[4] = depStringato; 
-            rowData[5] = intStringato; 
+            rowData[1] = nomeString; 
+            rowData[2] = cognomeString; 
+            rowData[3] = emailString; 
+            rowData[4] = telephoneString; 
+            rowData[5] = numeroInternoString; 
             model.addRow(rowData);
         }
     }
@@ -343,18 +358,27 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         {
             public void run() {
                 FileOpenerGUI fileOpener = new FileOpenerGUI();
-                defaultFileName = fileOpener.getTextFile(); 
-                System.out.println(defaultFileName);
-                                
-                try
+                
+                String newFileName = fileOpener.getTextFile(); 
+                
+                if(!newFileName.equals(defaultFileName))
                 {   
-                    setDefaultXML(); 
-                    loadTable();
-                }
-                catch(Exception e)
-                {
+                    defaultFileName = newFileName; 
+                    System.out.print("Il file è stato cambiato: ");
+                    try
+                    {   
+                        setDefaultXML(); 
+                        loadTable();
+                    }
+                    catch(Exception e)
+                    {
 
+                    }
                 }
+                else
+                    System.out.println("Il file non è stato cambiato: " + defaultFileName);
+                
+
                 
                 try
                 {

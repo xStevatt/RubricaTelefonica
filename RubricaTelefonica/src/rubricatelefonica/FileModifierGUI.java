@@ -1,9 +1,7 @@
 package rubricatelefonica;
 
-import java.awt.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.xml.xpath.XPath;
@@ -463,10 +461,13 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private void deletePersonNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonNameButtonActionPerformed
         String[] options = {"Sì", "No", "Annulla"};
         int option = JOptionPane.showOptionDialog(this, "Sei sicuro di voler eliminare il nome?", "Attenzione", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]); 
+        int personaSelezionata = this.posizionePersona; 
+        
+        NodeList nodes = RubricaTelefonicaGUI.document.getElementsByTagName("person");
         
         if(option == 0)
         {
-            System.out.println("1");
+
         }
         
         if(option == 1)
@@ -561,8 +562,8 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deletePersonEmailButtonActionPerformed
 
     private void buttonSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSurnameActionPerformed
-        String cognome = fieldCognome.getText(); 
-        String nome = fieldNome.getText();
+        String cognome = fieldCognome.getText().trim(); 
+        String nome = fieldNome.getText().trim();
         
         // Initialize
         isOnePersonSelected = false; 
@@ -682,30 +683,44 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 xpathFactory = XPathFactory.newInstance();
                 xpath = xpathFactory.newXPath();
                 element = (Element) xpath.evaluate("//*[@id='" + numero + "']", RubricaTelefonicaGUI.document, XPathConstants.NODE);
+                
+                deleteNumeroInterno.setEnabled(true);
+                deletePersonEmailButton.setEnabled(true);
+                deletePersonMobileButton.setEnabled(true);
+                deletePersonNameButton.setEnabled(true);
+                deletePersonSurnameButton.setEnabled(true);
             }
             catch(Exception e)
             {
-
+                deleteNumeroInterno.setEnabled(false);
+                deletePersonEmailButton.setEnabled(false);
+                deletePersonMobileButton.setEnabled(false);
+                deletePersonNameButton.setEnabled(false);
+                deletePersonSurnameButton.setEnabled(false);
             }
                                 
             Node el1 = element.getElementsByTagName("firstname").item(0);
-            String nomeStringato = el1.getTextContent();
+            String nomeString = el1.getTextContent();
+            
             Node el2 = element.getElementsByTagName("lastname").item(0);
-            String cognomeStringato = el2.getTextContent();
+            String cognomString = el2.getTextContent();
+            
             Node el3 = element.getElementsByTagName("email").item(0);
-            String emailStringato = el3.getTextContent();
+            String emailString = el3.getTextContent();
+            
             Node el4 = element.getElementsByTagName("telephone").item(0);
-            String depStringato = el4.getTextContent(); 
+            String telephoneString = el4.getTextContent(); 
+            
             Node el5 = element.getElementsByTagName("numero_interno").item(0);
-            String internoStringato = el5.getTextContent();     
+            String internoString = el5.getTextContent();     
             
                                 
             jTextArea1.append(" <person>" + "\n");
-            jTextArea1.append("     <firstname>" + nomeStringato + "</firstname>" + "\n");
-            jTextArea1.append("     <lastname>" + cognomeStringato + "</lastname>" + "\n"); 
-            jTextArea1.append("     <email>" + emailStringato + "</email>" + "\n");
-            jTextArea1.append("     <telephone>" + depStringato + "</telephone>" + "\n");
-            jTextArea1.append("     <numero_interno>" + internoStringato + "</numero_interno>" + "\n");
+            jTextArea1.append("     <firstname>" + nomeString + "</firstname>" + "\n");
+            jTextArea1.append("     <lastname>" + cognomString + "</lastname>" + "\n"); 
+            jTextArea1.append("     <email>" + emailString + "</email>" + "\n");
+            jTextArea1.append("     <telephone>" + telephoneString + "</telephone>" + "\n");
+            jTextArea1.append("     <numero_interno>" + internoString + "</numero_interno>" + "\n");
             jTextArea1.append(" </person>" + "\n");
         }
     }//GEN-LAST:event_buttonIDActionPerformed
@@ -735,19 +750,21 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_NameSurnameRadioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         
-        // open a joption pane, be sure to ask and check the input
-        int idNumber; 
-        
-        do
-        {
-            String idPersona;
-            idPersona = JOptionPane.showInputDialog("Inserisci l'id della persona da eliminare");
-            idNumber = Integer.parseInt(idPersona); 
             
-            Element element = (Element) RubricaTelefonicaGUI.document.getElementsByTagName(idPersona).item(0);
-        }while(idNumber <= 0 || idNumber > numeroPersone);
+        NodeList nodes = RubricaTelefonicaGUI.document.getElementsByTagName("person");
+        try
+        {   
+            NodeList lista = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
+            Node nodo = lista.item(posizionePersona); 
+            nodo.removeChild(nodo); 
+
+            RubricaTelefonicaGUI.document.normalize();
+        }
+        catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed

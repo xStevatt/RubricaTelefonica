@@ -2,6 +2,8 @@ package rubricatelefonica;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -22,22 +24,21 @@ public class FileCreatorGUI extends javax.swing.JFrame
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        fieldNome = new javax.swing.JTextField();
         labelNome = new javax.swing.JLabel();
         labelCognome = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        labelNumCellulare = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        labelNumFisso = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        labelIndirizzo = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        fieldCognome = new javax.swing.JTextField();
+        labelCellulare = new javax.swing.JLabel();
+        fieldCellulare = new javax.swing.JTextField();
         labelEmail = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        fieldEmail = new javax.swing.JTextField();
         modifyFileButton = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
-        labelEmail1 = new javax.swing.JLabel();
+        fieldInterno = new javax.swing.JTextField();
+        labelInterno = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        labelInterno1 = new javax.swing.JLabel();
+        fieldInterno1 = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -45,10 +46,10 @@ public class FileCreatorGUI extends javax.swing.JFrame
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Crea un File");
 
-        jTextField1.setText("Inserisci qui il nome");
-        jTextField1.addMouseListener(new MouseAdapter() {
+        fieldNome.setText("Inserisci qui il nome");
+        fieldNome.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                jTextField1.setText("");
+                fieldNome.setText("");
             }
         });
 
@@ -58,50 +59,30 @@ public class FileCreatorGUI extends javax.swing.JFrame
         labelCognome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelCognome.setText("Cognome:");
 
-        jTextField2.setText("Inserisci qui il cognome");
-        jTextField2.addMouseListener(new MouseAdapter() {
+        fieldCognome.setText("Inserisci qui il cognome");
+        fieldCognome.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                jTextField2.setText("");
+                fieldCognome.setText("");
             }
         });
 
-        labelNumCellulare.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelNumCellulare.setText("Numero di Cellulare: ");
+        labelCellulare.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelCellulare.setText("Numero di Cellulare: ");
 
-        jTextField3.setText("Inserisci qui il numero di cellulare");
-        jTextField3.addMouseListener(new MouseAdapter() {
+        fieldCellulare.setText("Inserisci qui il numero di cellulare");
+        fieldCellulare.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                jTextField3.setText("");
-            }
-        });
-
-        labelNumFisso.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelNumFisso.setText("Numero di Telefono Fisso: ");
-
-        jTextField4.setText("Inserire qui il numero di telefono fisso");
-        jTextField4.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                jTextField4.setText("");
-            }
-        });
-
-        labelIndirizzo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelIndirizzo.setText("Indirizzo: ");
-
-        jTextField5.setText("Inserire qui l'indrizzo");
-        jTextField5.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                jTextField5.setText("");
+                fieldCellulare.setText("");
             }
         });
 
         labelEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelEmail.setText("Indirizzo email:");
 
-        jTextField6.setText("Inserire qui l'indirizzo email");
-        jTextField6.addMouseListener(new MouseAdapter() {
+        fieldEmail.setText("Inserire qui l'indirizzo email");
+        fieldEmail.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                jTextField6.setText("");
+                fieldEmail.setText("");
             }
         });
 
@@ -113,17 +94,34 @@ public class FileCreatorGUI extends javax.swing.JFrame
             }
         });
 
-        jTextField7.setText("Inserire qui l'ID della persona: ");
-        jTextField7.addMouseListener(new MouseAdapter() {
+        fieldInterno.setText("Inserire qui l'ID della persona: ");
+        fieldInterno.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                jTextField6.setText("");
+                fieldEmail.setText("");
             }
         });
 
-        labelEmail1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelEmail1.setText("ID Persona:");
+        labelInterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelInterno.setText("Numero di Interno");
 
         jButton1.setText("Genera Casualmente Campi");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        labelInterno1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelInterno1.setText("ID Persona");
+
+        fieldInterno1.setText("Inserire qui l'ID della persona: ");
+        fieldInterno.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                fieldEmail.setText("");
+            }
+        });
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,89 +129,131 @@ public class FileCreatorGUI extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelIndirizzo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelNumFisso, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelNumCellulare, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelCognome, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelCellulare)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldCellulare, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelInterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fieldEmail)
+                                    .addComponent(fieldInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(labelCognome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(fieldCognome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(labelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelInterno1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldInterno1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(modifyFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNome))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCognome))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNumCellulare))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNumFisso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelIndirizzo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEmail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEmail1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNome))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldCognome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCognome))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldCellulare, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCellulare))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelEmail))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelInterno))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldInterno1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelInterno1)))
+                    .addComponent(jSeparator1))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modifyFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void modifyFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyFileButtonActionPerformed
-        int scelta = JOptionPane.showConfirmDialog(this, "Vuoi modificatre ulteriormente la tua rubrica?", "Elemento Creato", JOptionPane.YES_NO_OPTION);
+        
+        if(fieldNome.getText().length() > 0 && fieldCognome.getText().length() > 0 && fieldCellulare.getText().length() > 0 && 
+                fieldEmail.getText().length() > 0 && fieldInterno.getText().length() > 0)
+        {
+            int scelta = JOptionPane.showConfirmDialog(this, "Sei sicuro di voler eliminare l'elemento", "Elimina Elemento", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            int rubricaCounter; 
+            
+            if(scelta == 0)
+            {   
+                try
+                {
+                    File fileToRead = new File("/XML Files by User/infos.txt"); 
+                    Scanner sc = new Scanner(fileToRead); 
+
+                    String numberString = sc.next(); 
+                    rubricaCounter = Integer.parseInt(numberString);  
+                }
+                catch(Exception e)
+                {
+                    rubricaCounter = (int) Math.random() * 97;
+                }
+                
+                String fileName = "rubrica" + Integer.toString(rubricaCounter); 
+                
+                File rubricaReader = new File("/XML Files by User/" + fileName); 
+                
+                String nomeString = fieldNome.getText().trim(); 
+                String cognomeString = fieldCognome.getText().trim(); 
+                String cellulareString = fieldCellulare.getText().trim(); 
+                String emailString = fieldCellulare.getText().trim(); 
+                String nInternoString = fieldInterno.getText().trim(); 
+                
+                try
+                {
+                    
+                }
+                catch(Exception e)
+                {
+                    
+                }
+            }
+        }
+        
+        
+        int scelta = JOptionPane.showConfirmDialog(this, "Vuoi modificare ulteriormente la tua rubrica?", "Elemento Creato", JOptionPane.YES_NO_OPTION);
         
         if(scelta == 0)
         {
@@ -230,6 +270,54 @@ public class FileCreatorGUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_modifyFileButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        String[] nomi = {"Massimo", "Marcello", "Marco", "Mastino", "Maricchia",
+            "Marcellino", "Cavallo", "Catamarano", "Catalessi", "Stefano", "Stefania",
+            "Torello", "Tafano", "Mariolo", "Kebbabaro", "Gabriele", "Mattia", "Angela",
+            "Siracusa", "Sanculotto", "Sanpancrazio", "Giovanni", "Gialuca", "Giorgio"};
+                
+        String[] cognomi = {"Arcimboldo", "Australopiteco", "N'toni", "Polentone", "Terrone",
+            "Tasto", "Torquato", "Culatto", "Coatto", "Rosso", "Mussoleenee",
+            "Salveenee", "Stalin", "Cannavacciulo", "Knox", "Carabieniere", "Tacchinella", "Angela",
+            "Serafino", "Santo", "Stefano", "Saviano", "Mazucco", "Marino"};
+               
+        String[] lettere = {"a", "b", "c", "d", "e",
+            "d", "h", "i", "j", "k", "l",
+            "m", "n", "o", "p", "q", "r", "s",
+            "v", "w", "u", "x", "y", "z"};
+        
+        String[] clientEmail = {"gmail.com", "protonmail.com", "gmail.it", "outlook.it", "outlook.com", "yahoo.it", "libero.it"}; 
+        
+        fieldNome.setText(nomi[(int) (Math.random() * 24)]);
+        fieldCognome.setText(cognomi[(int) (Math.random() * 24)]);
+                
+        int numeroLettere = 0; 
+                
+        while(numeroLettere == 0)
+        {
+            numeroLettere = (int) (Math.random() * 10);
+        }
+        
+        String email = ""; 
+        
+        for(int i = 0; i < numeroLettere; i++)
+        {
+            email += lettere[(int) (Math.random() * 24)]; 
+        }
+        
+        fieldEmail.setText(email + "@" + clientEmail[(int) (Math.random() * 7)]);
+        fieldInterno1.setText(Integer.toString((int) (Math.random() * 300)));
+        
+        String numeroCellulare = ""; 
+        
+        for(int i = 0; i < 9; i++)
+        {
+            numeroCellulare += (int) (Math.random() * 9); 
+        }
+        fieldCellulare.setText(numeroCellulare);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         try 
         { 
@@ -242,22 +330,21 @@ public class FileCreatorGUI extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldCellulare;
+    private javax.swing.JTextField fieldCognome;
+    private javax.swing.JTextField fieldEmail;
+    private javax.swing.JTextField fieldInterno;
+    private javax.swing.JTextField fieldInterno1;
+    private javax.swing.JTextField fieldNome;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelCellulare;
     private javax.swing.JLabel labelCognome;
     private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelEmail1;
-    private javax.swing.JLabel labelIndirizzo;
+    private javax.swing.JLabel labelInterno;
+    private javax.swing.JLabel labelInterno1;
     private javax.swing.JLabel labelNome;
-    private javax.swing.JLabel labelNumCellulare;
-    private javax.swing.JLabel labelNumFisso;
     private javax.swing.JButton modifyFileButton;
     // End of variables declaration//GEN-END:variables
 }
