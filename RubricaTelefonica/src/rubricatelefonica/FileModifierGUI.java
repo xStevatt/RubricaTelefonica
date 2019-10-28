@@ -745,6 +745,15 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonIDActionPerformed
 
     private void IDRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDRadioButtonActionPerformed
+        
+        jTextArea1.setText("");
+        personSelectedLabel.setText("Nessuna Persona Selezionata");
+        deleteNumeroInterno.setEnabled(false);
+        deletePersonEmailButton.setEnabled(false);
+        deletePersonMobileButton.setEnabled(false);
+        deletePersonNameButton.setEnabled(false);
+        deletePersonSurnameButton.setEnabled(false);
+        
         buttonID.setEnabled(true);
         fieldID.setEditable(true);
         fieldCognome.setEditable(false);
@@ -757,6 +766,16 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_IDRadioButtonActionPerformed
 
     private void NameSurnameRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameSurnameRadioActionPerformed
+                
+        jTextArea1.setText("");
+        personSelectedLabel.setText("Nessuna Persona Selezionata");
+                
+        deleteNumeroInterno.setEnabled(false);
+        deletePersonEmailButton.setEnabled(false);
+        deletePersonMobileButton.setEnabled(false);
+        deletePersonNameButton.setEnabled(false);
+        deletePersonSurnameButton.setEnabled(false);
+        
         buttonID.setEnabled(false);
         fieldID.setEditable(false);
         fieldCognome.setEditable(true);
