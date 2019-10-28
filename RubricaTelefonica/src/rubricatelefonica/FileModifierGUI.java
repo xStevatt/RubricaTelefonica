@@ -584,7 +584,6 @@ public class FileModifierGUI extends javax.swing.JFrame {
             
             if (nNode.getNodeType() == Node.ELEMENT_NODE) 
             {
-                
                 Element elem = (Element) nNode;
 
                 Node node1 = elem.getElementsByTagName("firstname").item(0);
@@ -698,30 +697,50 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 deletePersonNameButton.setEnabled(false);
                 deletePersonSurnameButton.setEnabled(false);
             }
-                                
-            Node el1 = element.getElementsByTagName("firstname").item(0);
-            String nomeString = el1.getTextContent();
+               
+            String nomeString = "";
+            String cognomeString = ""; 
+            String emailString = "";
+            String telephoneString = "";
+            String internoString = "";
             
-            Node el2 = element.getElementsByTagName("lastname").item(0);
-            String cognomString = el2.getTextContent();
+            try
+            {
+                Node el1 = element.getElementsByTagName("firstname").item(0);
+                nomeString = el1.getTextContent();
+                Node el2 = element.getElementsByTagName("lastname").item(0);
+                cognomeString = el2.getTextContent();
+                Node el3 = element.getElementsByTagName("email").item(0);
+                emailString = el3.getTextContent();
+                Node el4 = element.getElementsByTagName("telephone").item(0);
+                telephoneString = el4.getTextContent(); 
+                Node el5 = element.getElementsByTagName("numero_interno").item(0);
+                internoString = el5.getTextContent();     
+            }
+            catch(Exception e)
+            {
+                
+            }
             
-            Node el3 = element.getElementsByTagName("email").item(0);
-            String emailString = el3.getTextContent();
-            
-            Node el4 = element.getElementsByTagName("telephone").item(0);
-            String telephoneString = el4.getTextContent(); 
-            
-            Node el5 = element.getElementsByTagName("numero_interno").item(0);
-            String internoString = el5.getTextContent();     
-            
-                                
-            jTextArea1.append(" <person>" + "\n");
-            jTextArea1.append("     <firstname>" + nomeString + "</firstname>" + "\n");
-            jTextArea1.append("     <lastname>" + cognomString + "</lastname>" + "\n"); 
-            jTextArea1.append("     <email>" + emailString + "</email>" + "\n");
-            jTextArea1.append("     <telephone>" + telephoneString + "</telephone>" + "\n");
-            jTextArea1.append("     <numero_interno>" + internoString + "</numero_interno>" + "\n");
-            jTextArea1.append(" </person>" + "\n");
+            if(nomeString.length() > 0 && cognomeString.length() > 0 && emailString.length() > 0 && telephoneString.length() > 0
+                    && internoString.length() > 0)
+            {
+                jTextArea1.append(" <person>" + "\n");
+                jTextArea1.append("     <firstname>" + nomeString + "</firstname>" + "\n");
+                jTextArea1.append("     <lastname>" + cognomeString + "</lastname>" + "\n"); 
+                jTextArea1.append("     <email>" + emailString + "</email>" + "\n");
+                jTextArea1.append("     <telephone>" + telephoneString + "</telephone>" + "\n");
+                jTextArea1.append("     <numero_interno>" + internoString + "</numero_interno>" + "\n");
+                jTextArea1.append(" </person>" + "\n");
+            }
+            else
+            {
+                deleteNumeroInterno.setEnabled(false);
+                deletePersonEmailButton.setEnabled(false);
+                deletePersonMobileButton.setEnabled(false);
+                deletePersonNameButton.setEnabled(false);
+                deletePersonSurnameButton.setEnabled(false);
+            }
         }
     }//GEN-LAST:event_buttonIDActionPerformed
 
