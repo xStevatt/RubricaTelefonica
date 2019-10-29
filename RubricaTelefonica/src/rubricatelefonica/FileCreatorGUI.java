@@ -19,6 +19,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import static rubricatelefonica.RubricaTelefonicaGUI.setDefaultXML;
 
 public class FileCreatorGUI extends javax.swing.JFrame
 {   
@@ -219,6 +220,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
                     String numberString = sc.next(); 
                     System.out.println("Il numero di rubriche vale " + numberString);
                     rubricaCounter = Integer.parseInt(numberString);  
+                    peopleCreated = rubricaCounter;                     
                 }
                 catch(Exception e)
                 {   
@@ -229,11 +231,12 @@ public class FileCreatorGUI extends javax.swing.JFrame
                 String fileName = "rubrica" + Integer.toString(rubricaCounter); 
                 
                 File rubricaReader = new File("./XML Files by User/" + fileName + ".xml"); 
+                RubricaTelefonicaGUI.defaultFileName = "./XML Files by User/" + fileName + ".xml"; 
                 
                 String nomeString = fieldNome.getText().trim(); 
                 String cognomeString = fieldCognome.getText().trim(); 
                 String cellulareString = fieldCellulare.getText().trim();
-                String emailString = fieldCellulare.getText().trim(); 
+                String emailString = fieldEmail.getText().trim(); 
                 String nInternoString = fieldInterno1.getText().trim(); 
                 
                 try
@@ -247,7 +250,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
                     document.appendChild(root);
                     
                     // Creates persona
-                    Element persona = document.createElement("persona"); 
+                    Element persona = document.createElement("person"); 
                     root.appendChild(persona); 
                     
                     // Creates an ID
@@ -299,7 +302,6 @@ public class FileCreatorGUI extends javax.swing.JFrame
                 {
                     
                 }
-                                      
             }
                             
             try
@@ -317,7 +319,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
             }
         }
         
-        
+        setDefaultXML();
         int scelta = JOptionPane.showConfirmDialog(this, "Vuoi modificare ulteriormente la tua rubrica?", "Elemento Creato", JOptionPane.YES_NO_OPTION);
         
         if(scelta == 0)
@@ -333,6 +335,18 @@ public class FileCreatorGUI extends javax.swing.JFrame
         {
             JOptionPane.showMessageDialog(this, "Sarai comunque in grado di modicare il tuo file più avanti!", "Ok!", JOptionPane.INFORMATION_MESSAGE);
         }
+        
+        try
+        {
+            RubricaTelefonicaGUI.setDefaultXML();
+            RubricaTelefonicaGUI.loadTable();
+            RubricaTelefonicaGUI.jTextArea1.updateUI();
+        }
+        catch(Exception e)
+        {
+            
+        }
+        setDefaultXML();
     }//GEN-LAST:event_modifyFileButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -22,7 +22,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     public static DocumentBuilderFactory factory; 
     public static DocumentBuilder builder; 
     public static Document document; 
-    public int contatore = 0; 
+    public static int contatore = 0; 
     
     // Costruttore della classe, si occupa di richiamare il costruttore della grafica initComponents() e sistemare gli elementi grafici
     public RubricaTelefonicaGUI() 
@@ -60,7 +60,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     }
     
         
-    public void loadTable() throws XPathExpressionException
+    public static void loadTable() throws XPathExpressionException
     {   
                
         System.out.println(defaultFileName);
@@ -123,23 +123,40 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     }
     
     // Questo metodo si occupa di mostrare a schermo il file XML che è stato preso dalla cartella del progetto
-    public void setDefaultXML()
+    public static void setDefaultXML()
     {   
         jTextArea1.setText("");
         try
         {
-            Scanner fileReader = new Scanner(new File(defaultFileName)); 
             String XMLFileContent = ""; 
             
-            while(fileReader.hasNextLine())
-            {   
-                XMLFileContent += fileReader.nextLine() + "\n"; 
+            NodeList list = document.getElementsByTagName("person");
+            XMLFileContent = ""; 
+            XMLFileContent = "<rubrica>\n"; 
+            for(int i = 0; i < list.getLength(); i++)
+            {
+                Node node = list.item(i); 
+                
+                if(node.getNodeType() == Node.ELEMENT_NODE)
+                {   
+                    Element eElement = (Element) node;
+                    XMLFileContent += " <person>\n";
+                    XMLFileContent += "     <firstname>" + eElement.getElementsByTagName("firstname").item(0).getTextContent() + "<firstname>\n"; 
+                    XMLFileContent += "     <lastname>" + eElement.getElementsByTagName("lastname").item(0).getTextContent() + "<lastname>\n";
+                    XMLFileContent += "     <email>" + eElement.getElementsByTagName("email").item(0).getTextContent() + "<email>\n";
+                    XMLFileContent += "     <telephone>" + eElement.getElementsByTagName("telephone").item(0).getTextContent() + "<telephone>\n";
+                    XMLFileContent += "     <numero_interno>" + eElement.getElementsByTagName("numero_interno").item(0).getTextContent() + "<numero_interno>\n";
+                    XMLFileContent += " </person>\n"; 
+                }
             }
+            XMLFileContent += "</rubrica>"; 
             jTextArea1.setText(XMLFileContent);
         }
         catch(Exception e)
-        {
-            int choice = JOptionPane.showConfirmDialog(this, "Il file rubrica.xml non è stato creato! Vuoi creare un nuovo file da zero?");
+        {   
+            /*
+            e.printStackTrace();
+            int choice = JOptionPane.showConfirmDialog(null, "Il file rubrica.xml non è stato creato! Vuoi creare un nuovo file da zero?");
             
             if(choice == 0)
             {
@@ -154,6 +171,8 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             {
                 System.err.println("Errore fatale nel sistema");
             }
+            
+            */
         }
     }
         
@@ -378,8 +397,6 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 else
                     System.out.println("Il file non è stato cambiato: " + defaultFileName);
                 
-
-                
                 try
                 {
                     factory = DocumentBuilderFactory.newInstance();
@@ -418,7 +435,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 new FileCreatorGUI().setVisible(true);
             }
         });
-                setDefaultXML(); 
+        setDefaultXML();
     }//GEN-LAST:event_createFileButtonActionPerformed
 
     private void openInBroswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswerActionPerformed
@@ -485,7 +502,8 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     }//GEN-LAST:event_openInBroswer2ActionPerformed
 
     private void openInBroswer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer3ActionPerformed
-                java.awt.EventQueue.invokeLater(new Runnable() 
+                
+        java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
                 try {
@@ -495,7 +513,8 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 }
             }
         });
-                        setDefaultXML(); 
+                        
+        setDefaultXML(); 
     }//GEN-LAST:event_openInBroswer3ActionPerformed
 
     public static void main(String args[]) 
@@ -529,8 +548,8 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JTable jTable1;
+    public static javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton modifyFileButton;
     private javax.swing.JButton openFileButton;
     private javax.swing.JButton openInBroswer;
