@@ -276,7 +276,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
                     
                     // telephone element
                     Element telephone = document.createElement("telephone"); 
-                    email.appendChild(document.createTextNode(cellulareString)); 
+                    telephone.appendChild(document.createTextNode(cellulareString)); 
                     persona.appendChild(telephone); 
                     
                     // numerodiinterno element
@@ -307,7 +307,6 @@ public class FileCreatorGUI extends javax.swing.JFrame
             try
             {   
                 FileWriter writer = new FileWriter(fileToRead);
-                System.out.println("PC" + peopleCreated);
                 writer.write(Integer.toString(peopleCreated));
                 writer.flush();
                 writer.close();
