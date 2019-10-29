@@ -2,13 +2,29 @@ package rubricatelefonica;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class FileCreatorGUI extends javax.swing.JFrame
-{
+{   
+    
+    private int peopleCreated = 0; 
+    
     public FileCreatorGUI() 
     {   
         this.setTitle("Rubrica Telefonica"); 
@@ -33,12 +49,10 @@ public class FileCreatorGUI extends javax.swing.JFrame
         labelEmail = new javax.swing.JLabel();
         fieldEmail = new javax.swing.JTextField();
         modifyFileButton = new javax.swing.JButton();
-        fieldInterno = new javax.swing.JTextField();
+        fieldInterno1 = new javax.swing.JTextField();
         labelInterno = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        labelInterno1 = new javax.swing.JLabel();
-        fieldInterno1 = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,8 +108,8 @@ public class FileCreatorGUI extends javax.swing.JFrame
             }
         });
 
-        fieldInterno.setText("Inserire qui l'ID della persona: ");
-        fieldInterno.addMouseListener(new MouseAdapter() {
+        fieldInterno1.setText("Inserire qui l'ID della persona: ");
+        fieldInterno1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 fieldEmail.setText("");
             }
@@ -111,18 +125,6 @@ public class FileCreatorGUI extends javax.swing.JFrame
             }
         });
 
-        labelInterno1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelInterno1.setText("ID Persona");
-
-        fieldInterno1.setText("Inserire qui l'ID della persona: ");
-        fieldInterno.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                fieldEmail.setText("");
-            }
-        });
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,40 +133,36 @@ public class FileCreatorGUI extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelCellulare)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldCellulare, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelInterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fieldEmail)
-                                    .addComponent(fieldInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(labelCognome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(fieldCognome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(labelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelInterno1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldInterno1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(modifyFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelCellulare)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldCellulare, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelInterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fieldEmail)
+                            .addComponent(fieldInterno1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelCognome, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldCognome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,37 +170,32 @@ public class FileCreatorGUI extends javax.swing.JFrame
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNome))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldCognome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelCognome))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldCellulare, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelCellulare))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelEmail))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelInterno))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldInterno1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelInterno1)))
-                    .addComponent(jSeparator1))
-                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldCognome, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCognome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldCellulare, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCellulare))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldInterno1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelInterno))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modifyFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,44 +204,116 @@ public class FileCreatorGUI extends javax.swing.JFrame
     private void modifyFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyFileButtonActionPerformed
         
         if(fieldNome.getText().length() > 0 && fieldCognome.getText().length() > 0 && fieldCellulare.getText().length() > 0 && 
-                fieldEmail.getText().length() > 0 && fieldInterno.getText().length() > 0)
+                fieldEmail.getText().length() > 0 && fieldInterno1.getText().length() > 0)
         {
             int scelta = JOptionPane.showConfirmDialog(this, "Sei sicuro di voler eliminare l'elemento", "Elimina Elemento", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             int rubricaCounter; 
-            
+            File fileToRead = null; 
             if(scelta == 0)
             {   
                 try
                 {
-                    File fileToRead = new File("/XML Files by User/infos.txt"); 
+                    fileToRead= new File("./XML Files by User/infos.txt"); 
                     Scanner sc = new Scanner(fileToRead); 
 
                     String numberString = sc.next(); 
+                    System.out.println("Il numero di rubriche vale " + numberString);
                     rubricaCounter = Integer.parseInt(numberString);  
                 }
                 catch(Exception e)
-                {
+                {   
+                    e.printStackTrace();
                     rubricaCounter = (int) Math.random() * 97;
                 }
                 
                 String fileName = "rubrica" + Integer.toString(rubricaCounter); 
                 
-                File rubricaReader = new File("/XML Files by User/" + fileName); 
+                File rubricaReader = new File("./XML Files by User/" + fileName + ".xml"); 
                 
                 String nomeString = fieldNome.getText().trim(); 
                 String cognomeString = fieldCognome.getText().trim(); 
-                String cellulareString = fieldCellulare.getText().trim(); 
+                String cellulareString = fieldCellulare.getText().trim();
                 String emailString = fieldCellulare.getText().trim(); 
-                String nInternoString = fieldInterno.getText().trim(); 
+                String nInternoString = fieldInterno1.getText().trim(); 
                 
                 try
                 {
+                    DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+                    Document document = documentBuilder.newDocument();
                     
+                    // Creates rubrica
+                    Element root = document.createElement("rubrica");
+                    document.appendChild(root);
+                    
+                    // Creates persona
+                    Element persona = document.createElement("persona"); 
+                    root.appendChild(persona); 
+                    
+                    // Creates an ID
+                    Attr attr = document.createAttribute("id"); 
+                    attr.setValue(Integer.toString(peopleCreated));
+                    persona.setAttributeNode(attr);
+                    peopleCreated++; // increases the number of people created
+                    
+                    // firstname element
+                    Element firstName = document.createElement("firstname");
+                    firstName.appendChild(document.createTextNode(nomeString)); 
+                    persona.appendChild(firstName); 
+                    
+                    // lastname element
+                    Element lastName = document.createElement("lastname"); 
+                    lastName.appendChild(document.createTextNode(cognomeString)); 
+                    persona.appendChild(lastName); 
+                    
+                    // email element
+                    Element email = document.createElement("email"); 
+                    email.appendChild(document.createTextNode(emailString)); 
+                    persona.appendChild(email); 
+                    
+                    // telephone element
+                    Element telephone = document.createElement("telephone"); 
+                    email.appendChild(document.createTextNode(cellulareString)); 
+                    persona.appendChild(telephone); 
+                    
+                    // numerodiinterno element
+                    Element intern = document.createElement("numero_interno"); 
+                    intern.appendChild(document.createTextNode(nInternoString));
+                    persona.appendChild(intern);
+                    
+                    try
+                    {
+                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                        Transformer transformer = transformerFactory.newTransformer();
+                        DOMSource domSource = new DOMSource(document);
+                        StreamResult streamResult = new StreamResult(rubricaReader);
+                        transformer.transform(domSource, streamResult);
+                    }
+                    catch(Exception e)
+                    {   
+                        e.printStackTrace();
+                        System.err.println("errore nella creazione del file");
+                    }
                 }
                 catch(Exception e)
                 {
                     
                 }
+                                      
+            }
+                            
+            try
+            {   
+                FileWriter writer = new FileWriter(fileToRead);
+                System.out.println("PC" + peopleCreated);
+                writer.write(Integer.toString(peopleCreated));
+                writer.flush();
+                writer.close();
+            }
+                
+            catch(Exception e)
+            {
+                e.printStackTrace();
             }
         }
         
@@ -333,17 +398,15 @@ public class FileCreatorGUI extends javax.swing.JFrame
     private javax.swing.JTextField fieldCellulare;
     private javax.swing.JTextField fieldCognome;
     private javax.swing.JTextField fieldEmail;
-    private javax.swing.JTextField fieldInterno;
     private javax.swing.JTextField fieldInterno1;
     private javax.swing.JTextField fieldNome;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelCellulare;
     private javax.swing.JLabel labelCognome;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelInterno;
-    private javax.swing.JLabel labelInterno1;
     private javax.swing.JLabel labelNome;
     private javax.swing.JButton modifyFileButton;
     // End of variables declaration//GEN-END:variables

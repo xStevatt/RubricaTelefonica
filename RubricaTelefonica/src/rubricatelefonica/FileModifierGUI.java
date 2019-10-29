@@ -591,7 +591,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 String fname = node1.getTextContent();
                 String fsurname = node2.getTextContent(); 
                 
-                if(fname.equals(nome) && fsurname.equals(cognome))
+                if(fname.equalsIgnoreCase(nome) && fsurname.equalsIgnoreCase(cognome))
                 {   
                     elementsFound++; 
                     
@@ -788,15 +788,16 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_NameSurnameRadioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-            
-        NodeList nodes = RubricaTelefonicaGUI.document.getElementsByTagName("person");
+                       
         try
         {   
-            NodeList lista = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
-            Node nodo = lista.item(posizionePersona); 
-            nodo.removeChild(nodo); 
-
+            NodeList lista = (NodeList) RubricaTelefonicaGUI.document.getElementsByTagName("person").item(0);    
+            Node node = lista.item(posizionePersona); 
+            
+            while (node.hasChildNodes())
+                node.removeChild(node.getFirstChild());
+            
+            System.out.println("Elemento rimosso");
             RubricaTelefonicaGUI.document.normalize();
         }
         catch(Exception e)

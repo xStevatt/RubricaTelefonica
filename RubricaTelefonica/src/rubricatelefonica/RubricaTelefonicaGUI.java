@@ -219,7 +219,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Valloncini Srl. Tutti i diritti sono riservati. Version 1.0");
+        jLabel3.setText("Valloncini Srl. Aggiornato alla versione 3.3");
 
         openInBroswer.setBackground(new java.awt.Color(0, 153, 153));
         openInBroswer.setText("Apri file nel broswer");
