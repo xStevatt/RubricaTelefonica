@@ -185,6 +185,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
         });
 
         addPersonButton.setText("Aggiungi Persona");
+        addPersonButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPersonButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -802,6 +807,17 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldNomeActionPerformed
+
+    private void addPersonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPersonButtonActionPerformed
+        
+        java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            public void run() {
+                new AddPersonGUI().setVisible(true);
+            }
+        });
+        
+    }//GEN-LAST:event_addPersonButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton IDRadioButton;

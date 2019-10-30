@@ -435,15 +435,14 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     }//GEN-LAST:event_openFileButtonActionPerformed
 
     private void modifyFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyFileButtonActionPerformed
-        // Modify a file
-        setDefaultXML();
         java.awt.EventQueue.invokeLater(new Runnable() 
         {
             public void run() {
                 new FileModifierGUI().setVisible(true);
             }
         });
-                setDefaultXML(); 
+                
+        setDefaultXML(); 
     }//GEN-LAST:event_modifyFileButtonActionPerformed
 
     private void createFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createFileButtonActionPerformed

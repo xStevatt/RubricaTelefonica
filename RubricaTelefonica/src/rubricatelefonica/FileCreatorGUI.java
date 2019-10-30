@@ -204,7 +204,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
         if(fieldNome.getText().length() > 0 && fieldCognome.getText().length() > 0 && fieldCellulare.getText().length() > 0 && 
                 fieldEmail.getText().length() > 0 && fieldInterno1.getText().length() > 0)
         {
-            int scelta = JOptionPane.showConfirmDialog(this, "Sei sicuro di voler eliminare l'elemento", "Elimina Elemento", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            int scelta = JOptionPane.showConfirmDialog(this, "Sei sicuro di voler creare un nuovo elemento?", "Creazione Elemento", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             int rubricaCounter; 
             File fileToRead = null; 
             if(scelta == 0)
