@@ -789,21 +789,14 @@ public class FileModifierGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                        
-        try
-        {   
-            NodeList lista = (NodeList) RubricaTelefonicaGUI.document.getElementsByTagName("person").item(0);    
-            Node node = lista.item(posizionePersona); 
-            
-            while (node.hasChildNodes())
-                node.removeChild(node.getFirstChild());
-            
-            System.out.println("Elemento rimosso");
-            RubricaTelefonicaGUI.document.normalize();
-        }
-        catch(Exception e)
+        NodeList list = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
+        
+        for (int i = 0; i < list.getLength(); i++)
         {
-            
+            Element person = (Element) list.item(i); 
+            person.getParentNode().removeChild(person);
         }
+        RubricaTelefonicaGUI.setDefaultXML(); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
