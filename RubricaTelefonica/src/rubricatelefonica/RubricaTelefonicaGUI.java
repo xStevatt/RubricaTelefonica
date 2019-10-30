@@ -55,9 +55,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         {
             
         }
-        
     }
-    
         
     public static void loadTable() throws XPathExpressionException
     {   
@@ -119,6 +117,23 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             rowData[5] = numeroInternoString; 
             model.addRow(rowData);
         }
+    }
+    
+    public static void addOneElementToTable(Element node)
+    {
+        Object[] rowData = new Object[6]; 
+                
+        contatore++; 
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        rowData[0] = contatore; 
+        rowData[1] = node.getElementsByTagName("firstname").item(0).getTextContent(); 
+        rowData[2] = node.getElementsByTagName("lastname").item(0).getTextContent(); 
+        rowData[3] = node.getElementsByTagName("email").item(0).getTextContent(); 
+        rowData[4] = node.getElementsByTagName("telephone").item(0).getTextContent(); 
+        rowData[5] = node.getElementsByTagName("numero_interno").item(0).getTextContent(); 
+        model.addRow(rowData);
     }
     
     // Questo metodo si occupa di mostrare a schermo il file XML che è stato preso dalla cartella del progetto

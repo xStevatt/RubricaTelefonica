@@ -278,6 +278,11 @@ public class AddPersonGUI extends javax.swing.JFrame {
         
         element.appendChild(node);
         
+        // FIX TABLE 
+        NodeList listaa = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
+        Element elementt = (Element) listaa.item(lunghezzaLista - 1); 
+        
+        RubricaTelefonicaGUI.addOneElementToTable(elementt);
         RubricaTelefonicaGUI.setDefaultXML();
         
         try
