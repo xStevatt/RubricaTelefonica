@@ -58,6 +58,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Crea un File");
 
+        fieldNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldNome.setText("Inserisci qui il nome");
         fieldNome.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -71,6 +72,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
         labelCognome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelCognome.setText("Cognome:");
 
+        fieldCognome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldCognome.setText("Inserisci qui il cognome");
         fieldCognome.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -81,6 +83,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
         labelCellulare.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelCellulare.setText("Numero di Cellulare: ");
 
+        fieldCellulare.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldCellulare.setText("Inserisci qui il numero di cellulare");
         fieldCellulare.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -91,6 +94,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
         labelEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelEmail.setText("Indirizzo email:");
 
+        fieldEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldEmail.setText("Inserire qui l'indirizzo email");
         fieldEmail.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -106,10 +110,11 @@ public class FileCreatorGUI extends javax.swing.JFrame
             }
         });
 
+        fieldInterno1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldInterno1.setText("Inserire qui l'ID della persona: ");
         fieldInterno1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                fieldEmail.setText("");
+                fieldInterno1.setText("");
             }
         });
 

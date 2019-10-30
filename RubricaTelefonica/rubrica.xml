@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<rubrica>
-	<person id="0">
-		<firstname>Chiara</firstname>
-		<lastname>Valloncini</lastname>
-		<email>chiaravalloncini@protonmail.com</email>
-		<telephone>123412341234</telephone>
-		<numero_interno>101</numero_interno>
-	</person>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><rubrica>
+	
 
 	<person id="1">
 		<firstname>Marco</firstname>
@@ -111,4 +104,4 @@
 		<telephone>3123123123</telephone>
 		<numero_interno>114</numero_interno>
 	</person>
-</rubrica>
+<person email="bj@gmail.com" firstname="Siracusa" lastname="Polentone" numero_interno="181" telephone="751864505"/><person person="14"/><person person="15"/></rubrica>

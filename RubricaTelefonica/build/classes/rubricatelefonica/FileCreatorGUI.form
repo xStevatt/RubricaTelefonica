@@ -124,6 +124,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldNome">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;Inserisci qui il nome&quot;" type="code"/>
         </Property>
@@ -146,6 +147,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldCognome">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;Inserisci qui il cognome&quot;" type="code"/>
         </Property>
@@ -162,6 +164,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldCellulare">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;Inserisci qui il numero di cellulare&quot;" type="code"/>
         </Property>
@@ -178,6 +181,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldEmail">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;Inserire qui l&apos;indirizzo email&quot;" type="code"/>
         </Property>
@@ -199,12 +203,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldInterno1">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;Inserire qui l&apos;ID della persona: &quot;" type="code"/>
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldInterno1.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    fieldEmail.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldInterno1.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    fieldInterno1.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="labelInterno">

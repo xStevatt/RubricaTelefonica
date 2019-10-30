@@ -2,8 +2,15 @@ package rubricatelefonica;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
@@ -795,13 +802,24 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                        
         NodeList list = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
-        
-        for (int i = 0; i < list.getLength(); i++)
-        {
-            Element person = (Element) list.item(i); 
-            person.getParentNode().removeChild(person);
-        }
+        Element person = (Element) list.item(posizionePersona); 
+        person.getParentNode().removeChild(person);
+
+        RubricaTelefonicaGUI.document.normalize();
         RubricaTelefonicaGUI.setDefaultXML(); 
+        
+        try
+        {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            Result output = new StreamResult(new File(RubricaTelefonicaGUI.defaultFileName));
+            Source input = new DOMSource(RubricaTelefonicaGUI.document);
+
+            transformer.transform(input, output);  
+        }
+        catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed

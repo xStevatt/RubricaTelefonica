@@ -1,7 +1,6 @@
 package rubricatelefonica;
 
 import java.io.File;
-import java.util.Scanner;
 import javax.swing.*; 
 import java.awt.Desktop;
 import java.net.URI;

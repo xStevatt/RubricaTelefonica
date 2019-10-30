@@ -1,5 +1,18 @@
 package rubricatelefonica;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 public class AddPersonGUI extends javax.swing.JFrame {
 
     public AddPersonGUI() 
@@ -33,7 +46,13 @@ public class AddPersonGUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Aggiungi Persona");
 
-        fieldNome.setText("jTextField1");
+        fieldNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldNome.setText("Inserire qui il nome della persona");
+        fieldNome.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                fieldNome.setText("");
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nome:");
@@ -41,24 +60,58 @@ public class AddPersonGUI extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Cognome:");
 
-        fieldCognome.setText("jTextField1");
+        fieldCognome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldCognome.setText("Inserire qui il cognome della persona");
+        fieldCognome.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                fieldCognome.setText("");
+            }
+        });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("email:");
 
-        fieldEmail.setText("jTextField1");
+        fieldEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldEmail.setText("Inserire qui l'email della persona");
+        fieldEmail.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                fieldEmail.setText("");
+            }
+        });
+        fieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldEmailActionPerformed(evt);
+            }
+        });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Cellulare:");
 
-        fieldCellulare.setText("jTextField1");
+        fieldCellulare.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldCellulare.setText("Inserire qui il cellulare della persona");
+        fieldCellulare.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                fieldCellulare.setText("");
+            }
+        });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Interno:");
 
-        fieldInterno.setText("jTextField1");
+        fieldInterno.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldInterno.setText("Inserire qui il nInterno della persona ");
+        fieldInterno.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                fieldInterno.setText("");
+            }
+        });
 
         jButton1.setText("Aggiungi una persona");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Genera Campi");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +239,65 @@ public class AddPersonGUI extends javax.swing.JFrame {
         }
         fieldCellulare.setText(numeroCellulare);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                
+        String nomeString = fieldNome.getText().trim(); 
+        String cognomeString = fieldCognome.getText().trim(); 
+        String emailString = fieldEmail.getText().trim(); 
+        String telephoneString = fieldCellulare.getText().trim(); 
+        String numeroInternoString = fieldInterno.getText().trim(); 
+        
+        NodeList lista = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
+        int lunghezzaLista = lista.getLength(); 
+        
+        Element element = RubricaTelefonicaGUI.document.getDocumentElement();
+
+        Node node = RubricaTelefonicaGUI.document.createElement("person");
+        ((Element)node).setAttribute("person", Integer.toString(lunghezzaLista++));
+        
+        Element firstname = RubricaTelefonicaGUI.document.createElement("firstname");
+        firstname.appendChild(RubricaTelefonicaGUI.document.createTextNode(nomeString));
+        node.appendChild(firstname); 
+        
+        Element lastname = RubricaTelefonicaGUI.document.createElement("lastname");
+        lastname.appendChild(RubricaTelefonicaGUI.document.createTextNode(cognomeString));
+        node.appendChild(lastname); 
+        
+        Element emailElement = RubricaTelefonicaGUI.document.createElement("email");
+        emailElement.appendChild(RubricaTelefonicaGUI.document.createTextNode(emailString));
+        node.appendChild(emailElement); 
+        
+        Element telefonoElement = RubricaTelefonicaGUI.document.createElement("telephone");
+        telefonoElement.appendChild(RubricaTelefonicaGUI.document.createTextNode(telephoneString));
+        node.appendChild(telefonoElement); 
+        
+        Element numeroInternoCreateElement = RubricaTelefonicaGUI.document.createElement("numero_interno");
+        numeroInternoCreateElement.appendChild(RubricaTelefonicaGUI.document.createTextNode(numeroInternoString));
+        node.appendChild(numeroInternoCreateElement); 
+        
+        element.appendChild(node);
+        
+        RubricaTelefonicaGUI.setDefaultXML();
+        
+        try
+        {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            Result output = new StreamResult(new File(RubricaTelefonicaGUI.defaultFileName));
+            Source input = new DOMSource(RubricaTelefonicaGUI.document);
+
+            transformer.transform(input, output);  
+        }
+        catch(Exception e)
+        {
+            
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void fieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldEmailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -119,8 +119,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldNome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Inserire qui il nome della persona"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldNome.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    fieldNome.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -136,8 +140,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldCognome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Inserire qui il cognome della persona"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldCognome.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    fieldCognome.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -147,8 +155,15 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldEmail">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Inserire qui l&apos;email della persona"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldEmailActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldEmail.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    fieldEmail.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -158,8 +173,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldCellulare">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Inserire qui il cellulare della persona"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldCellulare.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    fieldCellulare.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -169,13 +188,20 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldInterno">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Inserire qui il nInterno della persona "/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fieldInterno.addMouseListener(new MouseAdapter() {&#xa;  public void mouseClicked(MouseEvent e) {&#xa;    fieldInterno.setText(&quot;&quot;);&#xa;  }&#xa;});"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aggiungi una persona"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
