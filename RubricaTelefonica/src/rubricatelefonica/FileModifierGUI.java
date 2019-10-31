@@ -472,6 +472,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
 
     private void deletePersonNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonNameButtonActionPerformed
         String[] options = {"Sì", "No", "Annulla"};
+        
         int option = JOptionPane.showOptionDialog(this, "Sei sicuro di voler eliminare il nome?", "Attenzione", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]); 
         int personaSelezionata = this.posizionePersona; 
         
@@ -479,7 +480,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
         
         if(option == 0)
         {
-
+            NodeList lista = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
+            Element elemento = (Element) lista.item(personaSelezionata); 
+            elemento.removeChild(elemento); 
+            
+            RubricaTelefonicaGUI.document.normalize();
         }
         
         if(option == 1)
@@ -801,12 +806,20 @@ public class FileModifierGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                        
-        NodeList list = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
-        Element person = (Element) list.item(posizionePersona); 
-        person.getParentNode().removeChild(person);
-
-        RubricaTelefonicaGUI.document.normalize();
-        RubricaTelefonicaGUI.setDefaultXML(); 
+        try
+        {
+            NodeList list = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
+            Element person = (Element) list.item(posizionePersona); 
+            person.getParentNode().removeChild(person);
+            RubricaTelefonicaGUI.document.normalize();
+        
+            RubricaTelefonicaGUI.setDefaultXML(); 
+            buttonSurname.doClick();
+        }
+        catch(Exception e)
+        {
+            System.err.println("Erorre avvenuto nel sistma big rip");
+        }
         
         try
         {

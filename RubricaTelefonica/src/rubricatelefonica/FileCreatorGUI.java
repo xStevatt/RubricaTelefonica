@@ -2,6 +2,7 @@ package rubricatelefonica;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
@@ -348,6 +349,7 @@ public class FileCreatorGUI extends javax.swing.JFrame
             
         }
         setDefaultXML();
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_modifyFileButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

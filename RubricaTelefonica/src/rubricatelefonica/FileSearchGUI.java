@@ -14,7 +14,7 @@ import org.w3c.dom.NodeList;
 
 /**
  *
- * @author Stefano
+ * @author Stefano Valloncini
  */
 
 public class FileSearchGUI extends javax.swing.JFrame {
