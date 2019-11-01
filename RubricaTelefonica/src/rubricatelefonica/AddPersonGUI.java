@@ -249,12 +249,14 @@ public class AddPersonGUI extends javax.swing.JFrame {
         String numeroInternoString = fieldInterno.getText().trim(); 
         
         NodeList lista = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
+        Element elementoUltimaPos = (Element) lista.item(lista.getLength() - 1); 
+        elementoUltimaPos.getAttribute("id");
         int lunghezzaLista = lista.getLength(); 
         
         Element element = RubricaTelefonicaGUI.document.getDocumentElement();
 
         Node node = RubricaTelefonicaGUI.document.createElement("person");
-        ((Element)node).setAttribute("id", Integer.toString(lunghezzaLista++));
+        ((Element)node).setAttribute("id", Integer.toString(Integer.parseInt(elementoUltimaPos.getAttribute("id")) + 1));
         
         Element firstname = RubricaTelefonicaGUI.document.createElement("firstname");
         firstname.appendChild(RubricaTelefonicaGUI.document.createTextNode(nomeString));
