@@ -678,7 +678,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         XPath xpath; 
         jTextArea1.setText("");
         
-        int numero = 0; 
+        int numero = -1; 
         boolean erroreConversione = false; 
         
         try
@@ -693,13 +693,13 @@ public class FileModifierGUI extends javax.swing.JFrame {
         }
         
         if(!erroreConversione)
-        {
+        {   
             try
             {
                 xpathFactory = XPathFactory.newInstance();
                 xpath = xpathFactory.newXPath();
-                element = (Element) xpath.evaluate("//*[@id='" + numero + "']", RubricaTelefonicaGUI.document, XPathConstants.NODE);
-                
+                element = (Element) xpath.evaluate("//*[@id='" + Integer.toString(numero) + "']", RubricaTelefonicaGUI.document, XPathConstants.NODE);
+                posizionePersona = numero;
                 deleteNumeroInterno.setEnabled(true);
                 deletePersonEmailButton.setEnabled(true);
                 deletePersonMobileButton.setEnabled(true);
@@ -736,12 +736,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
             }
             catch(Exception e)
             {
-                
+                JOptionPane.showMessageDialog(this, "Elemento non trovato", "Attenzione", JOptionPane.WARNING_MESSAGE);
             }
             
             if(nomeString.length() > 0 && cognomeString.length() > 0 && emailString.length() > 0 && telephoneString.length() > 0
                     && internoString.length() > 0)
-            {
+            {   
                 jTextArea1.append(" <person>" + "\n");
                 jTextArea1.append("     <firstname>" + nomeString + "</firstname>" + "\n");
                 jTextArea1.append("     <lastname>" + cognomeString + "</lastname>" + "\n"); 
@@ -805,20 +805,19 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_NameSurnameRadioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                       
         try
-        {
-            NodeList list = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
-            Element person = (Element) list.item(posizionePersona); 
-            person.getParentNode().removeChild(person);
+        {   
+            XPathFactory xpathFactory = XPathFactory.newInstance();
+            XPath xpath = xpathFactory.newXPath();
+            Element persona = (Element) xpath.evaluate("//*[@id='" + Integer.toString(posizionePersona) + "']", RubricaTelefonicaGUI.document, XPathConstants.NODE);
+            persona.getParentNode().removeChild(persona);
             RubricaTelefonicaGUI.document.normalize();
-        
+            
+            jTextArea1.setText("");
             RubricaTelefonicaGUI.setDefaultXML(); 
-            buttonSurname.doClick();
         }
         catch(Exception e)
         {
-            System.err.println("Erorre avvenuto nel sistma big rip");
         }
         
         try
@@ -833,6 +832,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         {
             
         }
+        RubricaTelefonicaGUI.delteAnElement(posizionePersona); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed

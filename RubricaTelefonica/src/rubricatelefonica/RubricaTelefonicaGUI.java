@@ -30,7 +30,6 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         this.setResizable(false);
         requestFocusInWindow(); 
             
-                            
         try
         {
             factory = DocumentBuilderFactory.newInstance();
@@ -86,6 +85,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             String emailString = null; 
             String telephoneString = null; 
             String numeroInternoString = null; 
+            String idString = null; 
             
             try
             {
@@ -103,13 +103,15 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 
                 Node el5 = elem.getElementsByTagName("numero_interno").item(0);
                 numeroInternoString = el5.getTextContent();
+                
+                idString = elem.getAttribute("id");
             }
             catch(Exception e)
             {
                 
             }
             
-            rowData[0] = contatore; 
+            rowData[0] = idString; 
             rowData[1] = nomeString; 
             rowData[2] = cognomeString; 
             rowData[3] = emailString; 
@@ -127,7 +129,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
-        rowData[0] = contatore; 
+        rowData[0] = node.getAttribute("id"); 
         rowData[1] = node.getElementsByTagName("firstname").item(0).getTextContent(); 
         rowData[2] = node.getElementsByTagName("lastname").item(0).getTextContent(); 
         rowData[3] = node.getElementsByTagName("email").item(0).getTextContent(); 
@@ -135,6 +137,30 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         rowData[5] = node.getElementsByTagName("numero_interno").item(0).getTextContent(); 
         model.addRow(rowData);
     }
+    
+    public static void delteAnElement(int personaSelezionata)
+    {   
+        for(int i = 0; i < 1; i++)
+        {
+            for(int j = 0; j < jTable1.getRowCount(); j++)
+            {
+                if(Integer.parseInt((String) jTable1.getValueAt(j, i)) == personaSelezionata)
+                {
+                    jTable1.removeRowSelectionInterval(j, j);
+                }
+            }
+        }
+        
+        try
+        {
+            ((DefaultTableModel)jTable1.getModel()).removeRow(personaSelezionata - 1);
+            jTable1.updateUI();
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }   
     
     // Questo metodo si occupa di mostrare a schermo il file XML che è stato preso dalla cartella del progetto
     public static void setDefaultXML()
@@ -155,7 +181,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 {   
                     Element eElement = (Element) node;
                     XMLFileContent += " <person>\n";
-                    XMLFileContent += "     <firstname>" + eElement.getElementsByTagName("firstname").item(0).getTextContent() + "<firstname>\n"; 
+                    XMLFileContent += "     <firstname id=\"" + eElement.getAttribute("id") + "\">" + eElement.getElementsByTagName("firstname").item(0).getTextContent() + "<firstname>\n"; 
                     XMLFileContent += "     <lastname>" + eElement.getElementsByTagName("lastname").item(0).getTextContent() + "<lastname>\n";
                     XMLFileContent += "     <email>" + eElement.getElementsByTagName("email").item(0).getTextContent() + "<email>\n";
                     XMLFileContent += "     <telephone>" + eElement.getElementsByTagName("telephone").item(0).getTextContent() + "<telephone>\n";
@@ -295,7 +321,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
 
             },
             new String [] {
-                "ID", "Nome", "Cognome", "Email", "Cellulare", "Numero di Interno"
+                "ID", "Nome", "Cognome", "Email", "Cellulare", "Num di Interno"
             }
         ));
         jTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
@@ -437,6 +463,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                     builder = factory.newDocumentBuilder();
                     document = builder.parse(new File(defaultFileName));
                     document.getDocumentElement().normalize(); // normalizza il file
+                    setDefaultXML();
                 }
                 catch(Exception e)
                 {

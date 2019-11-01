@@ -199,7 +199,7 @@ public class AddPersonGUI extends javax.swing.JFrame {
             "Torello", "Tafano", "Mariolo", "Kebbabaro", "Gabriele", "Mattia", "Angela",
             "Siracusa", "Sanculotto", "Sanpancrazio", "Giovanni", "Gialuca", "Giorgio"};
                 
-        String[] cognomi = {"Arcimboldo", "Australopiteco", "N'toni", "Polentone", "Terrone",
+        String[] cognomi = {"Arcimboldo", "Australopiteco", "N'toni", "Polentone", "Escobar",
             "Tasto", "Torquato", "Culatto", "Coatto", "Rosso", "Mussoleenee",
             "Salveenee", "Stalin", "Cannavacciulo", "Knox", "Carabieniere", "Tacchinella", "Angela",
             "Serafino", "Santo", "Stefano", "Saviano", "Mazucco", "Marino"};
@@ -254,7 +254,7 @@ public class AddPersonGUI extends javax.swing.JFrame {
         Element element = RubricaTelefonicaGUI.document.getDocumentElement();
 
         Node node = RubricaTelefonicaGUI.document.createElement("person");
-        ((Element)node).setAttribute("person", Integer.toString(lunghezzaLista++));
+        ((Element)node).setAttribute("id", Integer.toString(lunghezzaLista++));
         
         Element firstname = RubricaTelefonicaGUI.document.createElement("firstname");
         firstname.appendChild(RubricaTelefonicaGUI.document.createTextNode(nomeString));
