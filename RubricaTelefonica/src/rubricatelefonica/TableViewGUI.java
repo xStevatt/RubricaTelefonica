@@ -51,8 +51,9 @@ public class TableViewGUI extends javax.swing.JFrame {
             String depStringato = el4.getTextContent();  
             Node el5 = elem.getElementsByTagName("numero_interno").item(0);
             String intStringato = el5.getTextContent();
+            String idString = elem.getAttribute("id");
             
-            rowData[0] = i; 
+            rowData[0] = idString; 
             rowData[1] = nomeStringato; 
             rowData[2] = cognomeStringato; 
             rowData[3] = emailStringato; 
@@ -82,6 +83,7 @@ public class TableViewGUI extends javax.swing.JFrame {
                 "ID", "Nome", "Cognome", "Email", "Cellulare", "Numero di Interno"
             }
         ));
+        jTable1.setSelectionBackground(new java.awt.Color(0, 153, 102));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

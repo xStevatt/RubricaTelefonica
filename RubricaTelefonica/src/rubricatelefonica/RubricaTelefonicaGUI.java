@@ -3,6 +3,11 @@ package rubricatelefonica;
 import java.io.File;
 import javax.swing.*; 
 import java.awt.Desktop;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,14 +27,14 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     public static DocumentBuilder builder; 
     public static Document document; 
     public static int contatore = 0; 
-    
+    public static Font font = null; 
     // Costruttore della classe, si occupa di richiamare il costruttore della grafica initComponents() e sistemare gli elementi grafici
     public RubricaTelefonicaGUI() 
     {   
         this.setTitle("Rubrica Telefonica"); 
         this.setResizable(false);
         requestFocusInWindow(); 
-            
+
         try
         {
             factory = DocumentBuilderFactory.newInstance();
@@ -42,6 +47,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         }
         
         initComponents();
+        
         jTextArea1.requestFocusInWindow();
         this.setLocationRelativeTo(null);
         setDefaultXML();
@@ -583,7 +589,13 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
 
     public static void main(String args[]) 
     {   
-        // Main menu graphics
+        try 
+        {
+        } 
+        catch (Exception e) 
+        {
+             //Handle exception
+        }
         
         try 
         { 
