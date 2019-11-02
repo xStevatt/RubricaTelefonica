@@ -27,6 +27,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     // Costruttore della classe, si occupa di richiamare il costruttore della grafica initComponents() e sistemare gli elementi grafici
     public RubricaTelefonicaGUI() 
     {   
+        System.out.print("File caricato: ");
         this.setTitle("Rubrica Telefonica"); 
         this.setResizable(false);
         requestFocusInWindow(); 
@@ -183,11 +184,10 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
         {
             for(int j = 0; j < jTable1.getRowCount(); j++)
             {   
-                if(Integer.parseInt((String) jTable1.getValueAt(j, i)) == personaSelezionata)
+                if(Integer.parseInt((String) jTable1.getValueAt(j, 0)) == personaSelezionata)
                 {   
                     System.out.println(Integer.parseInt((String) jTable1.getValueAt(j, i)));
                     index = j; 
-                    //jTable1.removeRowSelectionInterval(j, j + 1);
                 }
             }
         }
@@ -207,9 +207,10 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     {
         for(int j = 0; j < jTable1.getRowCount(); j++)
         {   
+            System.out.println(colonna);
+            System.out.println("ID nella tabella" + id);
             if(((String) jTable1.getValueAt(j, 0)).equals(id))
             {   
-                System.out.println("tab" + jTable1.getValueAt(j, colonna));
                 ((DefaultTableModel)jTable1.getModel()).setValueAt(updatedString, j, 1);
             }
         }

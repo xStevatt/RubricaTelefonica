@@ -25,6 +25,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private int elementsFound = 0; 
     private boolean isOnePersonSelected = false; 
     private int posizionePersona = 0; 
+    private int posizioneNellaLista = 0; 
     
     public FileModifierGUI() 
     {   
@@ -478,6 +479,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                         isOnePersonSelected = true; 
                         jTextArea1.append("<rubrica>" + "\n");
                         posizionePersona = Integer.parseInt(elem.getAttribute("id")); 
+                        posizioneNellaLista = i; 
                     }
                     else
                     {
@@ -743,7 +745,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
 
     private void modifyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyNameActionPerformed
         
-        Node persona = RubricaTelefonicaGUI.document.getElementById(""); 
+        Node persona = RubricaTelefonicaGUI.document.getElementsByTagName("person").item(posizioneNellaLista); 
         
         NodeList lista = persona.getChildNodes(); 
         
@@ -751,18 +753,30 @@ public class FileModifierGUI extends javax.swing.JFrame {
         {
             Node node = lista.item(i);
             
-            if("firstname".equals(node.getNodeName()))
-            {   
-                System.out.println("here");
-                node.setTextContent("asdasdasd");
+            try
+            {
+                if("firstname".equals(node.getNodeName()))
+                {   
+                    String newNameString = ""; 
 
-                NamedNodeMap attr  = node.getParentNode().getAttributes(); 
-                Node nodeAttr = attr.getNamedItem("id");
-                String stringa = nodeAttr.getTextContent(); 
-                System.out.println(stringa);
+                    while(newNameString.length() <= 0)
+                    {
+                        newNameString = JOptionPane.showInputDialog(null, "Inserisci il nuovo nome: ");
+                    }
+
+                    node.setTextContent(newNameString);
+
+                    NamedNodeMap attr  = node.getParentNode().getAttributes(); 
+                    Node nodeAttr = attr.getNamedItem("id");
+                    String stringa = nodeAttr.getTextContent(); 
+
+                    RubricaTelefonicaGUI.changeAnElement(1, stringa, newNameString);
+                    RubricaTelefonicaGUI.jTable1.updateUI();
+                }
+            }
+            catch(Exception e)
+            {
                 
-                RubricaTelefonicaGUI.changeAnElement(1, stringa, "Enrico il Papo");
-                RubricaTelefonicaGUI.jTable1.updateUI();
             }
         }
         
