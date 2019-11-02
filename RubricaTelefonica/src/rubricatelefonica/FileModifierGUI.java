@@ -15,6 +15,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -45,6 +46,14 @@ public class FileModifierGUI extends javax.swing.JFrame {
         fieldCognome.setEditable(false);
         fieldNome.setEditable(false);
         buttonSurname.setEnabled(false);
+        
+        deletePersonButton.setEnabled(false);
+        
+        modifyEmail.setEnabled(false);
+        modifyIntern.setEnabled(false);
+        modifyName.setEnabled(false);
+        modifySurname.setEnabled(false);
+        modifyTelephone.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -52,20 +61,20 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        deletePersonNameButton = new javax.swing.JButton();
-        deletePersonSurnameButton = new javax.swing.JButton();
-        deletePersonMobileButton = new javax.swing.JButton();
-        deleteNumeroInterno = new javax.swing.JButton();
-        deletePersonEmailButton = new javax.swing.JButton();
-        personSelectedLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        deletePersonButton = new javax.swing.JButton();
         addPersonButton = new javax.swing.JButton();
+        modifyName = new javax.swing.JButton();
+        personSelectedLabel = new javax.swing.JLabel();
+        modifySurname = new javax.swing.JButton();
+        modifyEmail = new javax.swing.JButton();
+        modifyTelephone = new javax.swing.JButton();
+        modifyIntern = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         IDRadioButton = new javax.swing.JRadioButton();
@@ -80,95 +89,13 @@ public class FileModifierGUI extends javax.swing.JFrame {
         fieldID = new javax.swing.JTextField();
         buttonID = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Modifica un file");
-
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        deletePersonNameButton.setEnabled(false);
-        deletePersonNameButton.setText("Elimina nome persona");
-        deletePersonNameButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePersonNameButtonActionPerformed(evt);
-            }
-        });
-
-        deletePersonSurnameButton.setEnabled(false);
-        deletePersonSurnameButton.setText("Elimina Cognome persona");
-        deletePersonSurnameButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePersonSurnameButtonActionPerformed(evt);
-            }
-        });
-
-        deletePersonMobileButton.setEnabled(false);
-        deletePersonMobileButton.setText("Elimina Cellulare persona");
-        deletePersonMobileButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePersonMobileButtonActionPerformed(evt);
-            }
-        });
-
-        deleteNumeroInterno.setEnabled(false);
-        deleteNumeroInterno.setText("Elimina Numero Interno");
-        deleteNumeroInterno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteNumeroInternoActionPerformed(evt);
-            }
-        });
-
-        deletePersonEmailButton.setEnabled(false);
-        deletePersonEmailButton.setText("Elimina Email persona");
-        deletePersonEmailButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePersonEmailButtonActionPerformed(evt);
-            }
-        });
-
-        personSelectedLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        personSelectedLabel.setText("Nessuna Persona Selezionata");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(deletePersonSurnameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deletePersonNameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deletePersonMobileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deleteNumeroInterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deletePersonEmailButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(64, 64, 64))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(personSelectedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(personSelectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deletePersonNameButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deletePersonSurnameButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deletePersonMobileButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteNumeroInterno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deletePersonEmailButton)
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
 
         jLabel2.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -184,10 +111,10 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setText("Elimina persona");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        deletePersonButton.setText("Elimina persona");
+        deletePersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                deletePersonButtonActionPerformed(evt);
             }
         });
 
@@ -198,25 +125,73 @@ public class FileModifierGUI extends javax.swing.JFrame {
             }
         });
 
+        modifyName.setText("Modifica Nome");
+        modifyName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyNameActionPerformed(evt);
+            }
+        });
+
+        personSelectedLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        personSelectedLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        personSelectedLabel.setText("Nessuna Persona Selezionata");
+
+        modifySurname.setText("Modifica Cognome");
+
+        modifyEmail.setText("Modifica Email");
+        modifyEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyEmailActionPerformed(evt);
+            }
+        });
+
+        modifyTelephone.setText("Modifca Numero di Telefono");
+
+        modifyIntern.setText("Modifica Numero di Interno");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addPersonButton, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(modifyName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addPersonButton, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(deletePersonButton, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(modifySurname, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(modifyEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(modifyTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(modifyIntern, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(personSelectedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jSeparator2)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(personSelectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(deletePersonButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addPersonButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modifyName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modifySurname)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modifyEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modifyTelephone)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modifyIntern)
+                .addGap(20, 20, 20))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 204));
@@ -225,7 +200,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Search by");
 
-        IDRadioButton.setBackground(new java.awt.Color(204, 204, 255));
+        IDRadioButton.setBackground(new java.awt.Color(255, 204, 204));
         IDRadioButton.setText("ID");
         IDRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +208,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
             }
         });
 
-        NameSurnameRadio.setBackground(new java.awt.Color(204, 204, 255));
+        NameSurnameRadio.setBackground(new java.awt.Color(255, 204, 204));
         NameSurnameRadio.setText("Name & Surname");
         NameSurnameRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,11 +251,6 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 {
                     fieldNome.setText("");
                     personSelectedLabel.setText("Nessuna Persona Selezionata");
-                    deletePersonNameButton.setEnabled(false);
-                    deletePersonSurnameButton.setEnabled(false);
-                    deletePersonMobileButton.setEnabled(false);
-                    deletePersonEmailButton.setEnabled(false);
-                    deleteNumeroInterno.setEnabled(false);
                 }
             }
         });
@@ -298,11 +268,6 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 {
                     fieldCognome.setText("");
                     personSelectedLabel.setText("Nessuna Persona Selezionata");
-                    deletePersonNameButton.setEnabled(false);
-                    deletePersonSurnameButton.setEnabled(false);
-                    deletePersonMobileButton.setEnabled(false);
-                    deletePersonEmailButton.setEnabled(false);
-                    deleteNumeroInterno.setEnabled(false);
                 }
             }
         });
@@ -325,7 +290,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -333,9 +298,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                     .addComponent(fieldCognome))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(14, 14, 14)
                 .addComponent(buttonSurname)
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,11 +332,6 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 {
                     fieldID.setText("");
                     personSelectedLabel.setText("Nessuna Persona Selezionata");
-                    deletePersonNameButton.setEnabled(false);
-                    deletePersonSurnameButton.setEnabled(false);
-                    deletePersonMobileButton.setEnabled(false);
-                    deletePersonEmailButton.setEnabled(false);
-                    deleteNumeroInterno.setEnabled(false);
                 }
             }
         });
@@ -393,11 +353,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonID)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,16 +370,17 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Puoi modificare una persona sola, prova a cercare by ID");
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Puoi modificare solo una persona alla volta.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,13 +392,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,13 +406,16 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3)
+                                .addGap(0, 33, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -462,125 +425,23 @@ public class FileModifierGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jScrollPane1)
+                        .addGap(22, 22, 22))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deletePersonNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonNameButtonActionPerformed
-        String[] options = {"Sì", "No", "Annulla"};
-        
-        int option = JOptionPane.showOptionDialog(this, "Sei sicuro di voler eliminare il nome?", "Attenzione", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]); 
-        int personaSelezionata = this.posizionePersona; 
-        
-        NodeList nodes = RubricaTelefonicaGUI.document.getElementsByTagName("person");
-        
-        if(option == 0)
-        {
-            NodeList lista = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
-            Element elemento = (Element) lista.item(personaSelezionata); 
-            elemento.removeChild(elemento); 
-            
-            RubricaTelefonicaGUI.document.normalize();
-        }
-        
-        if(option == 1)
-        {
-            System.out.println("2");
-        }
-        
-        if(option == 2)
-        {
-            System.out.println("3");
-        }
-    }//GEN-LAST:event_deletePersonNameButtonActionPerformed
-
-    private void deletePersonSurnameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonSurnameButtonActionPerformed
-        String[] options = {"Sì", "No", "Annulla"};
-        int option = JOptionPane.showOptionDialog(this, "Sei sicuro di voler eliminare il cognome?", "Attenzione", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]); 
-        
-        if(option == 0)
-        {
-            System.out.println("1");
-        }
-        
-        if(option == 1)
-        {
-            System.out.println("2");
-        }
-        
-        if(option == 2)
-        {
-            System.out.println("3");
-        }
-    }//GEN-LAST:event_deletePersonSurnameButtonActionPerformed
-
-    private void deletePersonMobileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonMobileButtonActionPerformed
-        String[] options = {"Sì", "No", "Annulla"};
-        int option = JOptionPane.showOptionDialog(this, "Sei sicuro di voler eliminare il cellulare?", "Attenzione", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]); 
-        
-        if(option == 0)
-        {
-            System.out.println("1");
-        }
-        
-        if(option == 1)
-        {
-            System.out.println("2");
-        }
-        
-        if(option == 2)
-        {
-            System.out.println("3");
-        }
-    }//GEN-LAST:event_deletePersonMobileButtonActionPerformed
-
-    private void deleteNumeroInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteNumeroInternoActionPerformed
-        String[] options = {"Sì", "No", "Annulla"};
-        int option = JOptionPane.showOptionDialog(this, "Sei sicuro di voler eliminare il numero di interno?", "Attenzione", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]); 
-        
-        if(option == 0)
-        {
-            System.out.println("1");
-        }
-        
-        if(option == 1)
-        {
-            System.out.println("2");
-        }
-        
-        if(option == 2)
-        {
-            System.out.println("3");
-        }
-    }//GEN-LAST:event_deleteNumeroInternoActionPerformed
-
-    private void deletePersonEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonEmailButtonActionPerformed
-        String[] options = {"Sì", "No", "Annulla"};
-        int option = JOptionPane.showOptionDialog(this, "Sei sicuro di voler eliminare l'email?", "Attenzione", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]); 
-        
-        if(option == 0)
-        {
-            System.out.println("1");
-        }
-        
-        if(option == 1)
-        {
-            System.out.println("2");
-        }
-        
-        if(option == 2)
-        {
-            System.out.println("3");
-        }
-    }//GEN-LAST:event_deletePersonEmailButtonActionPerformed
-
     private void buttonSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSurnameActionPerformed
         String cognome = fieldCognome.getText().trim(); 
         String nome = fieldNome.getText().trim();
+                
+        deletePersonButton.setEnabled(false);
+        modifyEmail.setEnabled(false);
+        modifyIntern.setEnabled(false);
+        modifyName.setEnabled(false);
+        modifySurname.setEnabled(false);
+        modifyTelephone.setEnabled(false);
         
         // Initialize
         isOnePersonSelected = false; 
@@ -616,7 +477,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                     {   
                         isOnePersonSelected = true; 
                         jTextArea1.append("<rubrica>" + "\n");
-                        posizionePersona = i; 
+                        posizionePersona = Integer.parseInt(elem.getAttribute("id")); 
                     }
                     else
                     {
@@ -651,17 +512,23 @@ public class FileModifierGUI extends javax.swing.JFrame {
         
         if(isOnePersonSelected)
         {   
+            deletePersonButton.setEnabled(true);
+            addPersonButton.setEnabled(true);
+            modifyEmail.setEnabled(true);
+            modifyIntern.setEnabled(true);
+            modifyName.setEnabled(true);
+            modifySurname.setEnabled(true);
+            modifyTelephone.setEnabled(true);
+            
             personSelectedLabel.setText("Persona " + posizionePersona + " selezionata");
-            deletePersonNameButton.setEnabled(true);
-            deletePersonSurnameButton.setEnabled(true);
-            deletePersonMobileButton.setEnabled(true);
-            deletePersonEmailButton.setEnabled(true);
-            deleteNumeroInterno.setEnabled(true);
+            deletePersonButton.setEnabled(true);
+            addPersonButton.setEnabled(true);
         }
         
         if(elementsFound > 1)
         {
             personSelectedLabel.setText(elementsFound + " persone trovate");
+            deletePersonButton.setEnabled(false);
         }
         
         if(elementsFound == 0)
@@ -680,6 +547,13 @@ public class FileModifierGUI extends javax.swing.JFrame {
         
         int numero = -1; 
         boolean erroreConversione = false; 
+                        
+        deletePersonButton.setEnabled(false);
+        modifyEmail.setEnabled(false);
+        modifyIntern.setEnabled(false);
+        modifyName.setEnabled(false);
+        modifySurname.setEnabled(false);
+        modifyTelephone.setEnabled(false);
         
         try
         {
@@ -700,19 +574,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 xpath = xpathFactory.newXPath();
                 element = (Element) xpath.evaluate("//*[@id='" + Integer.toString(numero) + "']", RubricaTelefonicaGUI.document, XPathConstants.NODE);
                 posizionePersona = numero;
-                deleteNumeroInterno.setEnabled(true);
-                deletePersonEmailButton.setEnabled(true);
-                deletePersonMobileButton.setEnabled(true);
-                deletePersonNameButton.setEnabled(true);
-                deletePersonSurnameButton.setEnabled(true);
             }
             catch(Exception e)
             {
-                deleteNumeroInterno.setEnabled(false);
-                deletePersonEmailButton.setEnabled(false);
-                deletePersonMobileButton.setEnabled(false);
-                deletePersonNameButton.setEnabled(false);
-                deletePersonSurnameButton.setEnabled(false);
             }
                
             String nomeString = "";
@@ -733,6 +597,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 telephoneString = el4.getTextContent(); 
                 Node el5 = element.getElementsByTagName("numero_interno").item(0);
                 internoString = el5.getTextContent();     
+
             }
             catch(Exception e)
             {
@@ -749,14 +614,25 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 jTextArea1.append("     <telephone>" + telephoneString + "</telephone>" + "\n");
                 jTextArea1.append("     <numero_interno>" + internoString + "</numero_interno>" + "\n");
                 jTextArea1.append(" </person>" + "\n");
+                
+                deletePersonButton.setEnabled(true);
+                addPersonButton.setEnabled(true);
+
+                modifyEmail.setEnabled(true);
+                modifyIntern.setEnabled(true);
+                modifyName.setEnabled(true);
+                modifySurname.setEnabled(true);
+                modifyTelephone.setEnabled(true);
+                
             }
             else
             {
-                deleteNumeroInterno.setEnabled(false);
-                deletePersonEmailButton.setEnabled(false);
-                deletePersonMobileButton.setEnabled(false);
-                deletePersonNameButton.setEnabled(false);
-                deletePersonSurnameButton.setEnabled(false);
+                deletePersonButton.setEnabled(false);
+                modifyEmail.setEnabled(false);
+                modifyIntern.setEnabled(false);
+                modifyName.setEnabled(false);
+                modifySurname.setEnabled(false);
+                modifyTelephone.setEnabled(false);
             }
         }
     }//GEN-LAST:event_buttonIDActionPerformed
@@ -765,11 +641,13 @@ public class FileModifierGUI extends javax.swing.JFrame {
         
         jTextArea1.setText("");
         personSelectedLabel.setText("Nessuna Persona Selezionata");
-        deleteNumeroInterno.setEnabled(false);
-        deletePersonEmailButton.setEnabled(false);
-        deletePersonMobileButton.setEnabled(false);
-        deletePersonNameButton.setEnabled(false);
-        deletePersonSurnameButton.setEnabled(false);
+        
+        deletePersonButton.setEnabled(false);
+        modifyEmail.setEnabled(false);
+        modifyIntern.setEnabled(false);
+        modifyName.setEnabled(false);
+        modifySurname.setEnabled(false);
+        modifyTelephone.setEnabled(false);
         
         buttonID.setEnabled(true);
         fieldID.setEditable(true);
@@ -783,15 +661,16 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_IDRadioButtonActionPerformed
 
     private void NameSurnameRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameSurnameRadioActionPerformed
-                
+        
         jTextArea1.setText("");
         personSelectedLabel.setText("Nessuna Persona Selezionata");
                 
-        deleteNumeroInterno.setEnabled(false);
-        deletePersonEmailButton.setEnabled(false);
-        deletePersonMobileButton.setEnabled(false);
-        deletePersonNameButton.setEnabled(false);
-        deletePersonSurnameButton.setEnabled(false);
+        deletePersonButton.setEnabled(false);
+        modifyEmail.setEnabled(false);
+        modifyIntern.setEnabled(false);
+        modifyName.setEnabled(false);
+        modifySurname.setEnabled(false);
+        modifyTelephone.setEnabled(false);
         
         buttonID.setEnabled(false);
         fieldID.setEditable(false);
@@ -804,7 +683,15 @@ public class FileModifierGUI extends javax.swing.JFrame {
         fieldNome.setText("Inserisci qui il nome");
     }//GEN-LAST:event_NameSurnameRadioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void deletePersonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonButtonActionPerformed
+        
+        deletePersonButton.setEnabled(false);
+        modifyEmail.setEnabled(false);
+        modifyIntern.setEnabled(false);
+        modifyName.setEnabled(false);
+        modifySurname.setEnabled(false);
+        modifyTelephone.setEnabled(false);
+        
         try
         {   
             XPathFactory xpathFactory = XPathFactory.newInstance();
@@ -833,7 +720,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
             
         }
         RubricaTelefonicaGUI.delteAnElement(posizionePersona); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_deletePersonButtonActionPerformed
 
     private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
         // TODO add your handling code here:
@@ -850,36 +737,79 @@ public class FileModifierGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_addPersonButtonActionPerformed
 
+    private void modifyEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifyEmailActionPerformed
+
+    private void modifyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyNameActionPerformed
+        
+        Node persona = RubricaTelefonicaGUI.document.getElementById(""); 
+        
+        NodeList lista = persona.getChildNodes(); 
+        
+        for(int i = 0; i < lista.getLength(); i++)
+        {
+            Node node = lista.item(i);
+            
+            if("firstname".equals(node.getNodeName()))
+            {   
+                System.out.println("here");
+                node.setTextContent("asdasdasd");
+
+                NamedNodeMap attr  = node.getParentNode().getAttributes(); 
+                Node nodeAttr = attr.getNamedItem("id");
+                String stringa = nodeAttr.getTextContent(); 
+                System.out.println(stringa);
+                
+                RubricaTelefonicaGUI.changeAnElement(1, stringa, "Enrico il Papo");
+                RubricaTelefonicaGUI.jTable1.updateUI();
+            }
+        }
+        
+        try
+        {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            Result output = new StreamResult(new File(RubricaTelefonicaGUI.defaultFileName));
+            Source input = new DOMSource(RubricaTelefonicaGUI.document);
+
+            transformer.transform(input, output);  
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }//GEN-LAST:event_modifyNameActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton IDRadioButton;
     private javax.swing.JRadioButton NameSurnameRadio;
     private javax.swing.JButton addPersonButton;
     private javax.swing.JButton buttonID;
     private javax.swing.JButton buttonSurname;
-    private javax.swing.JButton deleteNumeroInterno;
-    private javax.swing.JButton deletePersonEmailButton;
-    private javax.swing.JButton deletePersonMobileButton;
-    private javax.swing.JButton deletePersonNameButton;
-    private javax.swing.JButton deletePersonSurnameButton;
+    private javax.swing.JButton deletePersonButton;
     private javax.swing.JTextField fieldCognome;
     private javax.swing.JTextField fieldID;
     private javax.swing.JTextField fieldNome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton modifyEmail;
+    private javax.swing.JButton modifyIntern;
+    private javax.swing.JButton modifyName;
+    private javax.swing.JButton modifySurname;
+    private javax.swing.JButton modifyTelephone;
     private javax.swing.JLabel personSelectedLabel;
     // End of variables declaration//GEN-END:variables
 }

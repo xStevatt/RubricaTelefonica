@@ -241,7 +241,7 @@ public class AddPersonGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                
+                  
         String nomeString = fieldNome.getText().trim(); 
         String cognomeString = fieldCognome.getText().trim(); 
         String emailString = fieldEmail.getText().trim(); 
@@ -282,7 +282,7 @@ public class AddPersonGUI extends javax.swing.JFrame {
         
         // FIX TABLE 
         NodeList listaa = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
-        Element elementt = (Element) listaa.item(lunghezzaLista - 1); 
+        Element elementt = (Element) listaa.item(lunghezzaLista); 
         
         RubricaTelefonicaGUI.addOneElementToTable(elementt);
         RubricaTelefonicaGUI.setDefaultXML();

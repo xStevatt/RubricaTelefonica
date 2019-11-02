@@ -4,10 +4,6 @@ import java.io.File;
 import javax.swing.*; 
 import java.awt.Desktop;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -95,20 +91,56 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             
             try
             {
-                Node el1 = elem.getElementsByTagName("firstname").item(0);
-                nomeString= el1.getTextContent();
+                try
+                {
+                    Node el1 = elem.getElementsByTagName("firstname").item(0);
+                    nomeString= el1.getTextContent();
+                }
+                catch(Exception e)
+                {
+                    nomeString = ""; 
+                    e.printStackTrace();
+                }
                 
-                Node el2 = elem.getElementsByTagName("lastname").item(0);
-                cognomeString = el2.getTextContent();
+                try
+                {
+                    Node el2 = elem.getElementsByTagName("lastname").item(0);
+                    cognomeString = el2.getTextContent();
+                }
+                catch(Exception e)
+                {
+                    cognomeString = ""; 
+                }
                 
-                Node el3 = elem.getElementsByTagName("email").item(0);
-                emailString = el3.getTextContent();
+                try
+                {
+                    Node el3 = elem.getElementsByTagName("email").item(0);
+                    emailString = el3.getTextContent();
+                }
+                catch(Exception e)
+                {
+                    emailString = ""; 
+                }
+                                
+                try
+                {
+                    Node el4 = elem.getElementsByTagName("telephone").item(0);
+                    telephoneString = el4.getTextContent();
+                }
+                catch(Exception e)
+                {
+                    telephoneString = ""; 
+                }
                 
-                Node el4 = elem.getElementsByTagName("telephone").item(0);
-                telephoneString = el4.getTextContent();
-                
-                Node el5 = elem.getElementsByTagName("numero_interno").item(0);
-                numeroInternoString = el5.getTextContent();
+                try
+                {
+                    Node el5 = elem.getElementsByTagName("numero_interno").item(0);
+                    numeroInternoString = el5.getTextContent(); 
+                }
+                catch(Exception e)
+                {
+                    numeroInternoString = ""; 
+                }
                 
                 idString = elem.getAttribute("id");
             }
@@ -130,7 +162,6 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     public static void addOneElementToTable(Element node)
     {
         Object[] rowData = new Object[6]; 
-                
         contatore++; 
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -146,27 +177,43 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
     
     public static void delteAnElement(int personaSelezionata)
     {   
+        int index = -1;
+        
         for(int i = 0; i < 1; i++)
         {
             for(int j = 0; j < jTable1.getRowCount(); j++)
-            {
+            {   
                 if(Integer.parseInt((String) jTable1.getValueAt(j, i)) == personaSelezionata)
-                {
-                    jTable1.removeRowSelectionInterval(j, j);
+                {   
+                    System.out.println(Integer.parseInt((String) jTable1.getValueAt(j, i)));
+                    index = j; 
+                    //jTable1.removeRowSelectionInterval(j, j + 1);
                 }
             }
         }
         
         try
         {
-            ((DefaultTableModel)jTable1.getModel()).removeRow(personaSelezionata - 1);
+            ((DefaultTableModel)jTable1.getModel()).removeRow(index);
             jTable1.updateUI();
         }
         catch(Exception e)
         {
-            
+            e.printStackTrace();
         }
     }   
+        
+    public static void changeAnElement(int colonna, String id, String updatedString)
+    {
+        for(int j = 0; j < jTable1.getRowCount(); j++)
+        {   
+            if(((String) jTable1.getValueAt(j, 0)).equals(id))
+            {   
+                System.out.println("tab" + jTable1.getValueAt(j, colonna));
+                ((DefaultTableModel)jTable1.getModel()).setValueAt(updatedString, j, 1);
+            }
+        }
+    }
     
     // Questo metodo si occupa di mostrare a schermo il file XML che è stato preso dalla cartella del progetto
     public static void setDefaultXML()
@@ -186,8 +233,8 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 if(node.getNodeType() == Node.ELEMENT_NODE)
                 {   
                     Element eElement = (Element) node;
-                    XMLFileContent += " <person>\n";
-                    XMLFileContent += "     <firstname id=\"" + eElement.getAttribute("id") + "\">" + eElement.getElementsByTagName("firstname").item(0).getTextContent() + "<firstname>\n"; 
+                    XMLFileContent += " <person id=\"" + eElement.getAttribute("id") + "\">\n";
+                    XMLFileContent += "     <firstname>" + eElement.getElementsByTagName("firstname").item(0).getTextContent() + "<firstname>\n"; 
                     XMLFileContent += "     <lastname>" + eElement.getElementsByTagName("lastname").item(0).getTextContent() + "<lastname>\n";
                     XMLFileContent += "     <email>" + eElement.getElementsByTagName("email").item(0).getTextContent() + "<email>\n";
                     XMLFileContent += "     <telephone>" + eElement.getElementsByTagName("telephone").item(0).getTextContent() + "<telephone>\n";
@@ -564,7 +611,8 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 new FileSearchGUI().setVisible(true);
             }
         });
-                setDefaultXML(); 
+                
+        setDefaultXML(); 
     }//GEN-LAST:event_openInBroswer2ActionPerformed
 
     private void openInBroswer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openInBroswer3ActionPerformed
