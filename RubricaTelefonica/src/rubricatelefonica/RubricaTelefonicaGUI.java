@@ -570,7 +570,6 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             }
             catch(Exception e)
             {   
-                e.printStackTrace();
                 System.err.println("Errore nell'apertura del broswer");
             }
         }

@@ -195,13 +195,13 @@ public class AddPersonGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
                 
         String[] nomi = {"Massimo", "Marcello", "Marco", "Mastino", "Maricchia",
-            "Marcellino", "Cavallo", "Catamarano", "Catalessi", "Stefano", "Stefania",
-            "Torello", "Tafano", "Mariolo", "Kebbabaro", "Gabriele", "Mattia", "Angela",
-            "Siracusa", "Sanculotto", "Sanpancrazio", "Giovanni", "Gialuca", "Giorgio"};
+            "Marcellino", "Cavallo", "Catamarano", "Angelino", "Stefano", "Stefania",
+            "Alessandro", "Giaunluca", "Giovannino", "Adbul", "Gabriele", "Mattia", "Angela",
+            "Siracusa", "Sanculotto", "Elena", "Giovanni", "Anna", "Giorgio"};
                 
-        String[] cognomi = {"Arcimboldo", "Australopiteco", "N'toni", "Polentone", "Escobar",
-            "Tasto", "Torquato", "Culatto", "Coatto", "Rosso", "Mussoleenee",
-            "Salveenee", "Stalin", "Cannavacciulo", "Knox", "Carabieniere", "Tacchinella", "Angela",
+        String[] cognomi = {"Rossi", "Bianchi", "N'toni", "Polentone", "Escobar",
+            "Tasto", "Torquato", "Valloncini", "Pezzotti", "Cavagnini", "Mussoleenee",
+            "Salveenee", "Stalin", "Cannavacciulo", "Knox", "Carabieniere", "Alberti", "Angela",
             "Serafino", "Santo", "Stefano", "Saviano", "Mazucco", "Marino"};
                
         String[] lettere = {"a", "b", "c", "d", "e",

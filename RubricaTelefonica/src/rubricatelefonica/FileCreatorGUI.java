@@ -351,12 +351,12 @@ public class FileCreatorGUI extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        String[] nomi = {"Massimo", "Marcello", "Marco", "Mastino", "Maricchia",
-            "Marcellino", "Cavallo", "Catamarano", "Catalessi", "Stefano", "Stefania",
-            "Torello", "Tafano", "Mariolo", "Kebbabaro", "Gabriele", "Mattia", "Angela",
-            "Siracusa", "Sanculotto", "Sanpancrazio", "Giovanni", "Gialuca", "Giorgio"};
+        String[] nomi = {"Massimo", "Marcello", "Marco", "Marcolino", "Maricchia",
+            "Adolfo", "Benito", "Antonio", "Daniele", "Stefano", "Stefania",
+            "Davide", "Tafano", "Mariolo", "Marcellino", "Gabriele", "Mattia", "Angela",
+            "Siracusa", "Kevin", "Lin", "Giovanni", "Gialuca", "Giorgio"};
                 
-        String[] cognomi = {"Arcimboldo", "Australopiteco", "N'toni", "Polentone", "Terrone",
+        String[] cognomi = {"Arcimboldo", "Australopiteco", "N'toni", "Polentone", "Marzi",
             "Tasto", "Torquato", "Culatto", "Coatto", "Rosso", "Mussoleenee",
             "Salveenee", "Stalin", "Cannavacciulo", "Knox", "Carabieniere", "Tacchinella", "Angela",
             "Serafino", "Santo", "Stefano", "Saviano", "Mazucco", "Marino"};
