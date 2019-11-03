@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -22,13 +21,12 @@ import static rubricatelefonica.RubricaTelefonicaGUI.setDefaultXML;
 public class FileCreatorGUI extends javax.swing.JFrame
 {   
     
-    private int peopleCreated = 0; 
+    private int peopleCreated = 0;
     
     public FileCreatorGUI() 
     {   
-        this.setTitle("Rubrica Telefonica"); 
+        this.setTitle("Crea un file"); 
         this.setResizable(false);
-  
         
         initComponents();
         jLabel1.requestFocusInWindow(); 

@@ -91,6 +91,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         buttonID = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -138,6 +139,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
         personSelectedLabel.setText("Nessuna Persona Selezionata");
 
         modifySurname.setText("Modifica Cognome");
+        modifySurname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifySurnameActionPerformed(evt);
+            }
+        });
 
         modifyEmail.setText("Modifica Email");
         modifyEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -147,8 +153,18 @@ public class FileModifierGUI extends javax.swing.JFrame {
         });
 
         modifyTelephone.setText("Modifca Numero di Telefono");
+        modifyTelephone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyTelephoneActionPerformed(evt);
+            }
+        });
 
         modifyIntern.setText("Modifica Numero di Interno");
+        modifyIntern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyInternActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -252,6 +268,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 {
                     fieldNome.setText("");
                     personSelectedLabel.setText("Nessuna Persona Selezionata");
+
+                    modifyEmail.setEnabled(false);
+                    modifyIntern.setEnabled(false);
+                    modifyName.setEnabled(false);
+                    modifySurname.setEnabled(false);
+                    modifyTelephone.setEnabled(false);
                 }
             }
         });
@@ -269,6 +291,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 {
                     fieldCognome.setText("");
                     personSelectedLabel.setText("Nessuna Persona Selezionata");
+                    modifyEmail.setEnabled(false);
+                    modifyIntern.setEnabled(false);
+                    modifyName.setEnabled(false);
+                    modifySurname.setEnabled(false);
+                    modifyTelephone.setEnabled(false);
                 }
             }
         });
@@ -291,7 +318,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -333,6 +360,11 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 {
                     fieldID.setText("");
                     personSelectedLabel.setText("Nessuna Persona Selezionata");
+                    modifyEmail.setEnabled(false);
+                    modifyIntern.setEnabled(false);
+                    modifyName.setEnabled(false);
+                    modifySurname.setEnabled(false);
+                    modifyTelephone.setEnabled(false);
                 }
             }
         });
@@ -371,9 +403,13 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Puoi modificare solo una persona alla volta.");
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Prova a cercare solo per ID.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -393,11 +429,12 @@ public class FileModifierGUI extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -415,7 +452,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
-                                .addGap(0, 33, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)
+                                .addGap(0, 11, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -497,7 +536,9 @@ public class FileModifierGUI extends javax.swing.JFrame {
                     Node el5 = elem.getElementsByTagName("numero_interno").item(0);
                     String internoStringato = el5.getTextContent();       
                     
-                    jTextArea1.append(" <person>" + "\n");
+                    String idString = elem.getAttribute("id"); 
+                    
+                    jTextArea1.append(" <person id=\"" + idString + "\">\n");
                     jTextArea1.append("     <firstname>" + nomeStringato + "</firstname>" + "\n");
                     jTextArea1.append("     <lastname>" + cognomeStringato + "</lastname>" + "\n"); 
                     jTextArea1.append("     <email>" + emailStringato + "</email>" + "\n");
@@ -557,6 +598,8 @@ public class FileModifierGUI extends javax.swing.JFrame {
         modifySurname.setEnabled(false);
         modifyTelephone.setEnabled(false);
         
+        NodeList lista = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
+        
         try
         {
             numero = Integer.parseInt(fieldID.getText()); 
@@ -576,6 +619,22 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 xpath = xpathFactory.newXPath();
                 element = (Element) xpath.evaluate("//*[@id='" + Integer.toString(numero) + "']", RubricaTelefonicaGUI.document, XPathConstants.NODE);
                 posizionePersona = numero;
+                
+                for(int i = 0; i < lista.getLength(); i++)
+                {
+                    Node node = lista.item(i); 
+                    
+                   if(node.getNodeType() == Node.ELEMENT_NODE) 
+                   {    
+                       Element eElement = (Element) node;
+                       
+                       if(eElement.getAttribute("id").equals(Integer.toString(numero)))
+                       {
+                           posizioneNellaLista = i; 
+                       }
+                   }
+                }
+                
             }
             catch(Exception e)
             {
@@ -586,6 +645,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
             String emailString = "";
             String telephoneString = "";
             String internoString = "";
+            String idString = ""; 
             
             try
             {
@@ -599,7 +659,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
                 telephoneString = el4.getTextContent(); 
                 Node el5 = element.getElementsByTagName("numero_interno").item(0);
                 internoString = el5.getTextContent();     
-
+                idString = element.getAttribute("id"); 
             }
             catch(Exception e)
             {
@@ -609,7 +669,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
             if(nomeString.length() > 0 && cognomeString.length() > 0 && emailString.length() > 0 && telephoneString.length() > 0
                     && internoString.length() > 0)
             {   
-                jTextArea1.append(" <person>" + "\n");
+                jTextArea1.append(" <person id=\"" + idString + "\">\n");
                 jTextArea1.append("     <firstname>" + nomeString + "</firstname>" + "\n");
                 jTextArea1.append("     <lastname>" + cognomeString + "</lastname>" + "\n"); 
                 jTextArea1.append("     <email>" + emailString + "</email>" + "\n");
@@ -740,13 +800,58 @@ public class FileModifierGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addPersonButtonActionPerformed
 
     private void modifyEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyEmailActionPerformed
-        // TODO add your handling code here:
+                
+        Node persona = RubricaTelefonicaGUI.document.getElementsByTagName("person").item(posizioneNellaLista); 
+        
+        NodeList lista = persona.getChildNodes(); 
+        
+        for(int i = 0; i < lista.getLength(); i++)
+        {
+            Node node = lista.item(i);
+            
+            try
+            {
+                if("email".equals(node.getNodeName()))
+                {   
+                    String newEmailString = ""; 
+
+                    while(newEmailString.length() <= 0)
+                    {
+                        newEmailString = JOptionPane.showInputDialog(null, "Inserisci la nuova email: ");
+                    }
+
+                    node.setTextContent(newEmailString);
+
+                    NamedNodeMap attr  = node.getParentNode().getAttributes(); 
+                    Node nodeAttr = attr.getNamedItem("id");
+                    String stringa = nodeAttr.getTextContent(); 
+
+                    RubricaTelefonicaGUI.changeAnElement(3, stringa, newEmailString);
+                    RubricaTelefonicaGUI.jTable1.updateUI();
+                }
+            }
+            catch(Exception e)
+            {
+                
+            }
+        }
+        
+        try
+        {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            Result output = new StreamResult(new File(RubricaTelefonicaGUI.defaultFileName));
+            Source input = new DOMSource(RubricaTelefonicaGUI.document);
+
+            transformer.transform(input, output);  
+        }
+        catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_modifyEmailActionPerformed
 
     private void modifyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyNameActionPerformed
-        
         Node persona = RubricaTelefonicaGUI.document.getElementsByTagName("person").item(posizioneNellaLista); 
-        
         NodeList lista = persona.getChildNodes(); 
         
         for(int i = 0; i < lista.getLength(); i++)
@@ -794,6 +899,146 @@ public class FileModifierGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_modifyNameActionPerformed
 
+    private void modifySurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifySurnameActionPerformed
+                        
+        Node persona = RubricaTelefonicaGUI.document.getElementsByTagName("person").item(posizioneNellaLista); 
+        
+        NodeList lista = persona.getChildNodes(); 
+        
+        for(int i = 0; i < lista.getLength(); i++)
+        {
+            Node node = lista.item(i);
+            
+            try
+            {
+                if("lastname".equals(node.getNodeName()))
+                {   
+                    String newEmailString = ""; 
+
+                    while(newEmailString.length() <= 0)
+                    {
+                        newEmailString = JOptionPane.showInputDialog(null, "Inserisci il nuovo cognome: ");
+                    }
+
+                    node.setTextContent(newEmailString);
+
+                    NamedNodeMap attr  = node.getParentNode().getAttributes(); 
+                    Node nodeAttr = attr.getNamedItem("id");
+                    String stringa = nodeAttr.getTextContent(); 
+
+                    RubricaTelefonicaGUI.changeAnElement(2, stringa, newEmailString);
+                    RubricaTelefonicaGUI.jTable1.updateUI();
+                }
+            }
+            catch(Exception e)
+            {
+                
+            }
+        }
+    }//GEN-LAST:event_modifySurnameActionPerformed
+
+    private void modifyTelephoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyTelephoneActionPerformed
+                
+        Node persona = RubricaTelefonicaGUI.document.getElementsByTagName("person").item(posizioneNellaLista); 
+        
+        NodeList lista = persona.getChildNodes(); 
+        
+        for(int i = 0; i < lista.getLength(); i++)
+        {
+            Node node = lista.item(i);
+            
+            try
+            {
+                if("telephone".equals(node.getNodeName()))
+                {   
+                    String newCellulareString = ""; 
+
+                    while(newCellulareString.length() <= 0)
+                    {
+                        newCellulareString = JOptionPane.showInputDialog(null, "Inserisci il nuovo cellulare: ");
+                    }
+
+                    node.setTextContent(newCellulareString);
+
+                    NamedNodeMap attr  = node.getParentNode().getAttributes(); 
+                    Node nodeAttr = attr.getNamedItem("id");
+                    String stringa = nodeAttr.getTextContent(); 
+
+                    RubricaTelefonicaGUI.changeAnElement(4, stringa, newCellulareString);
+                    RubricaTelefonicaGUI.jTable1.updateUI();
+                }
+            }
+            catch(Exception e)
+            {
+                
+            }
+        }
+        
+        try
+        {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            Result output = new StreamResult(new File(RubricaTelefonicaGUI.defaultFileName));
+            Source input = new DOMSource(RubricaTelefonicaGUI.document);
+
+            transformer.transform(input, output);  
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }//GEN-LAST:event_modifyTelephoneActionPerformed
+
+    private void modifyInternActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyInternActionPerformed
+                
+        Node persona = RubricaTelefonicaGUI.document.getElementsByTagName("person").item(posizioneNellaLista); 
+        
+        NodeList lista = persona.getChildNodes(); 
+        
+        for(int i = 0; i < lista.getLength(); i++)
+        {
+            Node node = lista.item(i);
+            
+            try
+            {
+                if("numero_interno".equals(node.getNodeName()))
+                {   
+                    String newInternoString = ""; 
+
+                    while(newInternoString.length() <= 0)
+                    {
+                        newInternoString = JOptionPane.showInputDialog(null, "Inserisci il nuovo numero di interno: ");
+                    }
+
+                    node.setTextContent(newInternoString);
+
+                    NamedNodeMap attr  = node.getParentNode().getAttributes(); 
+                    Node nodeAttr = attr.getNamedItem("id");
+                    String stringa = nodeAttr.getTextContent(); 
+
+                    RubricaTelefonicaGUI.changeAnElement(5, stringa, newInternoString);
+                    RubricaTelefonicaGUI.jTable1.updateUI();
+                }
+            }
+            catch(Exception e)
+            {
+                
+            }
+        }
+        
+        try
+        {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            Result output = new StreamResult(new File(RubricaTelefonicaGUI.defaultFileName));
+            Source input = new DOMSource(RubricaTelefonicaGUI.document);
+
+            transformer.transform(input, output);  
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }//GEN-LAST:event_modifyInternActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton IDRadioButton;
     private javax.swing.JRadioButton NameSurnameRadio;
@@ -811,6 +1056,7 @@ public class FileModifierGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

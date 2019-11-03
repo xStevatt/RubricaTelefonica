@@ -32,7 +32,9 @@ public class FileSearchGUI extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(null);        
-        
+        this.setResizable(false);
+        this.setTitle("Cerca nel file");
+                
         ButtonGroup bg = new ButtonGroup(); 
         bg.add(IDRadioButton);
         bg.add(NameSurnameRadio);
@@ -379,7 +381,8 @@ public class FileSearchGUI extends javax.swing.JFrame {
             String emailString = "";
             String telephoneString = "";
             String internoString = "";
-
+            String idString = ""; 
+            
             try
             {
                 Node el1 = element.getElementsByTagName("firstname").item(0);
@@ -392,7 +395,8 @@ public class FileSearchGUI extends javax.swing.JFrame {
                 telephoneString = el4.getTextContent();
                 Node el5 = element.getElementsByTagName("numero_interno").item(0);
                 internoString = el5.getTextContent();
-                                
+                idString = element.getAttribute("id");
+                
                 elementsFoundLabel.setText("Elementi trovati: " + 1);
             }
             catch(Exception e)
@@ -404,7 +408,7 @@ public class FileSearchGUI extends javax.swing.JFrame {
             if(nomeString.length() > 0 && cognomeString.length() > 0 && emailString.length() > 0 && telephoneString.length() > 0
                 && internoString.length() > 0)
             {
-                jTextArea1.append(" <person>" + "\n");
+                jTextArea1.append(" <person id=\"" + idString + "\">\n");
                 jTextArea1.append("     <firstname>" + nomeString + "</firstname>" + "\n");
                 jTextArea1.append("     <lastname>" + cognomeString + "</lastname>" + "\n");
                 jTextArea1.append("     <email>" + emailString + "</email>" + "\n");
@@ -467,8 +471,10 @@ public class FileSearchGUI extends javax.swing.JFrame {
                     String depStringato = el4.getTextContent();
                     Node el5 = elem.getElementsByTagName("numero_interno").item(0);
                     String internoStringato = el5.getTextContent();
+                    
+                    String idString = elem.getAttribute("id"); 
 
-                    jTextArea1.append(" <person>" + "\n");
+                    jTextArea1.append(" <person id=\"" + idString + "\">\n");
                     jTextArea1.append("     <firstname>" + nomeStringato + "</firstname>" + "\n");
                     jTextArea1.append("     <lastname>" + cognomeStringato + "</lastname>" + "\n");
                     jTextArea1.append("     <email>" + emailStringato + "</email>" + "\n");

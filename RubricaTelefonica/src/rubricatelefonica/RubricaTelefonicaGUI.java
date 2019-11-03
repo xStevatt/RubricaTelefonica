@@ -147,7 +147,6 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             }
             catch(Exception e)
             {
-                
             }
             
             rowData[0] = idString; 
@@ -211,7 +210,7 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
             System.out.println("ID nella tabella" + id);
             if(((String) jTable1.getValueAt(j, 0)).equals(id))
             {   
-                ((DefaultTableModel)jTable1.getModel()).setValueAt(updatedString, j, 1);
+                ((DefaultTableModel)jTable1.getModel()).setValueAt(updatedString, j, colonna);
             }
         }
     }
