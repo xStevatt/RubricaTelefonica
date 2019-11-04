@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rubricatelefonica;
 
 import javax.swing.table.DefaultTableModel;
@@ -13,8 +8,9 @@ import org.w3c.dom.NodeList;
 
 /**
  *
- * @author Stefano
+ * @author Stefano Valloncini
  */
+
 public class TableViewGUI extends javax.swing.JFrame {
 
     /**

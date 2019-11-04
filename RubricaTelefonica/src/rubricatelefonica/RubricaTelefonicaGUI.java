@@ -16,6 +16,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ *
+ * @author Stefano Valloncini
+ */
+
 public class RubricaTelefonicaGUI extends javax.swing.JFrame
 {   
     public static String defaultFileName = "rubrica.xml";
@@ -234,11 +239,11 @@ public class RubricaTelefonicaGUI extends javax.swing.JFrame
                 {   
                     Element eElement = (Element) node;
                     XMLFileContent += " <person id=\"" + eElement.getAttribute("id") + "\">\n";
-                    XMLFileContent += "     <firstname>" + eElement.getElementsByTagName("firstname").item(0).getTextContent() + "<firstname>\n"; 
-                    XMLFileContent += "     <lastname>" + eElement.getElementsByTagName("lastname").item(0).getTextContent() + "<lastname>\n";
-                    XMLFileContent += "     <email>" + eElement.getElementsByTagName("email").item(0).getTextContent() + "<email>\n";
-                    XMLFileContent += "     <telephone>" + eElement.getElementsByTagName("telephone").item(0).getTextContent() + "<telephone>\n";
-                    XMLFileContent += "     <numero_interno>" + eElement.getElementsByTagName("numero_interno").item(0).getTextContent() + "<numero_interno>\n";
+                    XMLFileContent += "     <firstname>" + eElement.getElementsByTagName("firstname").item(0).getTextContent() + "</firstname>\n"; 
+                    XMLFileContent += "     <lastname>" + eElement.getElementsByTagName("lastname").item(0).getTextContent() + "</lastname>\n";
+                    XMLFileContent += "     <email>" + eElement.getElementsByTagName("email").item(0).getTextContent() + "</email>\n";
+                    XMLFileContent += "     <telephone>" + eElement.getElementsByTagName("telephone").item(0).getTextContent() + "</telephone>\n";
+                    XMLFileContent += "     <numero_interno>" + eElement.getElementsByTagName("numero_interno").item(0).getTextContent() + "</numero_interno>\n";
                     XMLFileContent += " </person>\n"; 
                 }
             }

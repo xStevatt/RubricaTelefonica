@@ -13,6 +13,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ *
+ * @author Stefano Valloncini
+ */
+
 public class AddPersonGUI extends javax.swing.JFrame {
 
     public AddPersonGUI() 
@@ -242,11 +247,17 @@ public class AddPersonGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                   
-        String nomeString = fieldNome.getText().trim(); 
-        String cognomeString = fieldCognome.getText().trim(); 
-        String emailString = fieldEmail.getText().trim(); 
-        String telephoneString = fieldCellulare.getText().trim(); 
-        String numeroInternoString = fieldInterno.getText().trim(); 
+        String nomeString = ""; 
+        String cognomeString = ""; 
+        String emailString = ""; 
+        String telephoneString = ""; 
+        String numeroInternoString = ""; 
+        
+        nomeString = fieldNome.getText().trim(); 
+        cognomeString = fieldCognome.getText().trim(); 
+        emailString = fieldEmail.getText().trim(); 
+        telephoneString = fieldCellulare.getText().trim(); 
+        numeroInternoString = fieldInterno.getText().trim(); 
         
         NodeList lista = RubricaTelefonicaGUI.document.getElementsByTagName("person"); 
         Element elementoUltimaPos = (Element) lista.item(lista.getLength() - 1); 

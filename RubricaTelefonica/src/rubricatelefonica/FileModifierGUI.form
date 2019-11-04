@@ -149,12 +149,12 @@
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="modifyName" max="32767" attributes="0"/>
-                      <Component id="addPersonButton" pref="261" max="32767" attributes="0"/>
-                      <Component id="deletePersonButton" pref="261" max="32767" attributes="0"/>
-                      <Component id="modifySurname" alignment="0" pref="261" max="32767" attributes="0"/>
-                      <Component id="modifyEmail" alignment="0" pref="261" max="32767" attributes="0"/>
-                      <Component id="modifyTelephone" alignment="0" pref="261" max="32767" attributes="0"/>
-                      <Component id="modifyIntern" alignment="0" pref="261" max="32767" attributes="0"/>
+                      <Component id="addPersonButton" max="32767" attributes="0"/>
+                      <Component id="deletePersonButton" max="32767" attributes="0"/>
+                      <Component id="modifySurname" alignment="0" max="32767" attributes="0"/>
+                      <Component id="modifyEmail" alignment="0" max="32767" attributes="0"/>
+                      <Component id="modifyTelephone" alignment="0" max="32767" attributes="0"/>
+                      <Component id="modifyIntern" alignment="0" max="32767" attributes="0"/>
                       <Component id="personSelectedLabel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>

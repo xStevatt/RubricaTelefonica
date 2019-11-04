@@ -6,6 +6,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ *
+ * @author Stefano Valloncini
+ */
+
 public class FileOpenerGUI extends JPanel
 {   
     private File XMLFile; 

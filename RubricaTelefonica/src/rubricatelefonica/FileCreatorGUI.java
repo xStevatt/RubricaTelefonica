@@ -18,6 +18,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import static rubricatelefonica.RubricaTelefonicaGUI.setDefaultXML;
 
+/**
+ *
+ * @author Stefano Valloncini
+ */
+
 public class FileCreatorGUI extends javax.swing.JFrame
 {   
     
